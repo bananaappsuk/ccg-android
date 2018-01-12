@@ -183,7 +183,7 @@ ImageView backArrow,drProfileImg;
                 /*if(s.equalsIgnoreCase("FragmentC"))
                     Toast.makeText(Home.this," FragmentC ",Toast.LENGTH_SHORT).show();*/
                 if(s.equalsIgnoreCase("DisplayMessageBoard")) {
-                    //    Cache.putData(CatchValue.BackArrow, getApplicationContext(), "Hide", Cache.CACHE_LOCATION_DISK);
+                    Cache.putData(CatchValue.BackArrowRecall, getApplicationContext(), "BackArrowRecall", Cache.CACHE_LOCATION_DISK);
                     //   Toast.makeText(Home.this, " HOme ", Toast.LENGTH_SHORT).show();
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.content, new MessageBoard());
@@ -200,7 +200,7 @@ ImageView backArrow,drProfileImg;
                 }
                 else
                 if(s.equalsIgnoreCase("TrainingRegister")) {
-
+                    Cache.putData(CatchValue.BackArrowRecall, getApplicationContext(), "BackArrowRecall", Cache.CACHE_LOCATION_DISK);
                     //    Cache.putData(CatchValue.BackArrow, getApplicationContext(), "Hide", Cache.CACHE_LOCATION_DISK);
                     //   Toast.makeText(Home.this, " HOme ", Toast.LENGTH_SHORT).show();
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -218,6 +218,7 @@ ImageView backArrow,drProfileImg;
                 }
                 else
                 if(s.equalsIgnoreCase("JobApply")) {
+                    Cache.putData(CatchValue.BackArrowRecall, getApplicationContext(), "BackArrowRecall", Cache.CACHE_LOCATION_DISK);
                     //    Cache.putData(CatchValue.BackArrow, getApplicationContext(), "Hide", Cache.CACHE_LOCATION_DISK);
                     //   Toast.makeText(Home.this, " HOme ", Toast.LENGTH_SHORT).show();
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -228,6 +229,7 @@ ImageView backArrow,drProfileImg;
                 }
                 else
                 if(s.equalsIgnoreCase("EventApply")) {
+                    Cache.putData(CatchValue.BackArrowRecall, getApplicationContext(), "BackArrowRecall", Cache.CACHE_LOCATION_DISK);
                     //    Cache.putData(CatchValue.BackArrow, getApplicationContext(), "Hide", Cache.CACHE_LOCATION_DISK);
                     //   Toast.makeText(Home.this, " HOme ", Toast.LENGTH_SHORT).show();
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -377,6 +379,7 @@ ImageView backArrow,drProfileImg;
                    // fragment = new FragmentB();
                     Cache.putData(CatchValue.BackArrow, getApplicationContext(), "Hide", Cache.CACHE_LOCATION_DISK);
                     Cache.putData(CatchValue.MyBooking, getApplicationContext(), "MyBookingCall", Cache.CACHE_LOCATION_DISK);
+                    Cache.putData(CatchValue.BackArrowRecall, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
                     BackArrowMethod();
                    // backArrow.setVisibility(View.VISIBLE);
                     transaction.replace(R.id.content, new FragmentA());
@@ -386,6 +389,7 @@ ImageView backArrow,drProfileImg;
                 //    mTextMessage.setText(R.string.title_dashboard);
               //      fragment = new FragmentB();
                    // backArrow.setVisibility(View.VISIBLE);
+                    Cache.putData(CatchValue.BackArrowRecall, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
                     transaction.replace(R.id.content, new FragmentB());
                     transaction.commit();
                     return true;
@@ -396,6 +400,7 @@ ImageView backArrow,drProfileImg;
                     return true;*/
                 case R.id.navigation_more:
                 //    mTextMessage.setText(R.string.title_more);
+                    Cache.putData(CatchValue.BackArrowRecall, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
                     transaction.replace(R.id.content, new More());
                     transaction.commit();
 

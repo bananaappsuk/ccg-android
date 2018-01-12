@@ -366,9 +366,10 @@ else
                       isInternetPresent = cd.isConnectionAvailable();
                       if (isInternetPresent) {
                        //   showToast("success");
-                          //   Log.e("11111 Traning_Id "," "+Traning_Id);
+
                           //   Log.e("11111 Traning_Id "," "+((String) Cache.getData(CatchValue.ID,getContext())));
                           dialog.dismiss();
+
                           new RegisterTask().execute(Traning_Id, ((String) Cache.getData(CatchValue.ID,getContext())),""+3);
                       } else {
                           //  ShowNoInternetDialog();
@@ -630,6 +631,7 @@ else
                 jObject.put("EventID", params[0]);
                 jObject.put("UserID", params[1]);
                 jObject.put("Module_Type", params[2]);
+
                 response = new ServiceClass().getJsonObjectResponsePost("http://ccg.bananaappscenter.com/api/User/ModuleRegister?EventID="+params[0]+"&UserID="+params[1]+"&Module_Type="+params[2]);
             } catch (JSONException e) {
                 showToast("Server couldn't respond,Please try again");
@@ -674,14 +676,16 @@ else
     private void gerRegisterResponse(Report response) {
 
         try {
-          //  Log.e("Response "," "+response);
+           // Log.e("1452 Response "," "+response);
 
             resultJsonObject = response.getJsonObject();
+          //  Log.e("1452 resultJsonObject "," "+resultJsonObject);
             if(resultJsonObject!=null) {
          //       Log.e("Response ", " " + resultJsonObject.getString("Message"));
                 if (resultJsonObject.getString("StatusCode").equalsIgnoreCase("200")) {
                     //showToast(resultJsonObject.getString("Message"));
-                    showToast(resultJsonObject.getString("Registered successfully..."));
+                    showToast(resultJsonObject.getString("Message"));
+                    Cache.putData(CatchValue.BackArrowRecall, getContext(), "", Cache.CACHE_LOCATION_DISK);
                     /*Intent intent = new Intent(getContext(), Home.class);
                     Cache.putData(CatchValue.Operation, getContext(), "TrainingRegister", Cache.CACHE_LOCATION_DISK);
                     startActivity(intent);*/

@@ -114,29 +114,39 @@ public class MessageBoard extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_message_board, container, false);
 
-        msgBoardTitle = (TextView)v.findViewById(R.id.msgBoardTitle);
-        avlMsg = (TextView)v.findViewById(R.id.avlMsg);
-        msgCount = (TextView)v.findViewById(R.id.msgCount);
+        msgBoardTitle = (TextView) v.findViewById(R.id.msgBoardTitle);
+        avlMsg = (TextView) v.findViewById(R.id.avlMsg);
+        msgCount = (TextView) v.findViewById(R.id.msgCount);
         Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "AbrilFatface-Regular.ttf");
         msgBoardTitle.setTypeface(custom_font);
-        messagBoardRCV= (RecyclerView)v.findViewById(R.id.messagBoardRCV);
+        messagBoardRCV = (RecyclerView) v.findViewById(R.id.messagBoardRCV);
         messageBoardLists = new ArrayList<>();
-        sid = ((String) Cache.getData(CatchValue.ID,getContext()));
+        sid = ((String) Cache.getData(CatchValue.ID, getContext()));
         cd = new ConnectionDetector(getContext());
-      //  isInternetPresent = cd.isConnectionAvailable();
-
-        isInternetPresent = cd.isConnectionAvailable();
-        if (isInternetPresent) {
-            new MessageBoardData().execute(sid);
-        } else {
-            ShowNoInternetDialog();
-        }
-
-
-        // Inflate the layout for this fragment
         Cache.putData(CatchValue.BackArrow, getContext(), "MessageBoard", Cache.CACHE_LOCATION_DISK);
-        ((Home)getActivity()).BackArrowMethod();
+        ((Home) getActivity()).BackArrowMethod();
 
+        String BackArrowRecall = ((String) Cache.getData(CatchValue.BackArrowRecall, getContext()));
+        if(BackArrowRecall.equalsIgnoreCase("BackArrowRecall"))
+        {
+            Cache.putData(CatchValue.BackArrowRecall, getContext(), "", Cache.CACHE_LOCATION_DISK);
+            ShowData();
+        }
+else {
+
+            //  isInternetPresent = cd.isConnectionAvailable();
+
+            isInternetPresent = cd.isConnectionAvailable();
+            if (isInternetPresent) {
+                new MessageBoardData().execute(sid);
+            } else {
+                ShowNoInternetDialog();
+            }
+
+
+            // Inflate the layout for this fragment
+
+        }
         return v;
     }
 

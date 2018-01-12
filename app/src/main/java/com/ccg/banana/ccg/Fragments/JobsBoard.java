@@ -131,18 +131,26 @@ String sid;
         sid = ((String) Cache.getData(CatchValue.ID,getContext()));
         cd = new ConnectionDetector(getContext());
         isInternetPresent = cd.isConnectionAvailable();
-
-        isInternetPresent = cd.isConnectionAvailable();
-        if (isInternetPresent) {
-            new TrainingBoardData().execute();
-        } else {
-            ShowNoInternetDialog();
-        }
-
-
-        // Inflate the layout for this fragment
         Cache.putData(CatchValue.BackArrow, getContext(), "JobsBoard", Cache.CACHE_LOCATION_DISK);
         ((Home)getActivity()).BackArrowMethod();
+
+        String BackArrowRecall = ((String) Cache.getData(CatchValue.BackArrowRecall, getContext()));
+        if(BackArrowRecall.equalsIgnoreCase("BackArrowRecall"))
+        {
+            Cache.putData(CatchValue.BackArrowRecall, getContext(), "", Cache.CACHE_LOCATION_DISK);
+            ShowData();
+        }
+        else {
+            isInternetPresent = cd.isConnectionAvailable();
+            if (isInternetPresent) {
+                new TrainingBoardData().execute();
+            } else {
+                ShowNoInternetDialog();
+            }
+
+        }
+        // Inflate the layout for this fragment
+
 
         return v;
     }

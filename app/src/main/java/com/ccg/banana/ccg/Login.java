@@ -298,6 +298,7 @@ public class Login extends BaseActivity  {
                             Cache.putData(CatchValue.ID, getApplicationContext(), resultJsonObject.getString("ID"), Cache.CACHE_LOCATION_DISK);
                             Cache.putData(CatchValue.BackArrow, getApplicationContext(), "Hide", Cache.CACHE_LOCATION_DISK);
                             Cache.putData(CatchValue.MyBooking, getApplicationContext(), "MyBookingCall", Cache.CACHE_LOCATION_DISK);
+                            Cache.putData(CatchValue.BackArrowRecall, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
 
                           //  Log.e("12345  "," "+ (String) Cache.getData(CatchValue.USER_NAME,Login.this));
 

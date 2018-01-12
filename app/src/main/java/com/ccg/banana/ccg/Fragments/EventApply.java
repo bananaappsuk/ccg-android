@@ -577,7 +577,8 @@ else
               //  Log.e("Response ", " " + resultJsonObject.getString("Message"));
                 if (resultJsonObject.getString("StatusCode").equalsIgnoreCase("200")) {
                    // showToast(resultJsonObject.getString("Message"));
-                    showToast(resultJsonObject.getString("Applied successfully..."));
+                    showToast(resultJsonObject.getString("Message"));
+                    Cache.putData(CatchValue.BackArrowRecall, getContext(), "", Cache.CACHE_LOCATION_DISK);
                   /*  Intent intent = new Intent(getContext(), Home.class);
                     Cache.putData(CatchValue.Operation, getContext(), "TrainingRegister", Cache.CACHE_LOCATION_DISK);
                     startActivity(intent);*/

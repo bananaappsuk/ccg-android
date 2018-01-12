@@ -28,4 +28,6 @@ public class CatchValue {
     public static final String ModuleId = "ModuleId";
     public static final String ModuleType = "ModuleType";
 
+    public static final String BackArrowRecall ="BackArrowRecall";
+
 }

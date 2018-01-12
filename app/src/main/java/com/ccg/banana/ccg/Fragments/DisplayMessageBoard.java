@@ -123,6 +123,7 @@ public class DisplayMessageBoard extends Fragment {
 
         shareDialog = new ShareDialog(this);
 
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
