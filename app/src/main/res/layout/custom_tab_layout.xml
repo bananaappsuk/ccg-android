@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tab_layout_id"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/reminder_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_small"
+
+        android:gravity="center"
+        android:paddingLeft="@dimen/padding_mini"
+        android:paddingRight="@dimen/padding_mini"
+        android:text="1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/small_text_size"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/tabImage"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:scaleType="center" />
+
+</LinearLayout>

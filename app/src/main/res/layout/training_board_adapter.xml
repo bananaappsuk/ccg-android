@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/llt"
+            android:orientation="horizontal"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/n_logo"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:src="@mipmap/pic" />
+           <!-- <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                >-->
+
+            <LinearLayout android:orientation="horizontal" android:layout_height="fill_parent" android:layout_width="fill_parent">
+
+
+
+            <LinearLayout
+
+                android:layout_weight="1" android:layout_height="fill_parent" android:layout_width="0dp"
+                android:verticalScrollbarPosition="right"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="5dp">
+
+                <TextView
+                    android:id="@+id/msgTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:singleLine="true"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/dimen_15"
+                    android:textColor="@color/dark_black"
+                    style="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+                <TextView
+                    android:id="@+id/Content_Type"
+                    style="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimen_15"
+                    android:textColor="@color/dark_pink"
+                    android:text=""
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="start"
+                    android:gravity="start">
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/dark_pink"
+                        android:ems="8"
+                        android:inputType="text"
+                        />
+                    <TextView
+                        android:id="@+id/fromToTimes"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="3"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_pink"
+                        android:text="" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="start"
+
+                    android:gravity="start">
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="left"
+                        android:drawableLeft="@mipmap/location"
+                        android:text=""
+                        android:ems="8"
+                        android:textColor="@color/dark_black"
+                        android:inputType="text"
+                        />
+
+                    <TextView
+                        android:id="@+id/dateDisplay"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="3"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_pink"
+                        android:text="" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+                <LinearLayout android:layout_weight="0.07" android:layout_height="fill_parent" android:layout_width="0dp">
+                    <ImageView
+                        android:id="@+id/registerStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/applied" />
+                </LinearLayout>
+
+            </LinearLayout>
+  <!--  </ScrollView>-->
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:alpha=".2"
+            android:background="@color/cement"
+            android:layout_height="2dp"/>
+
+</LinearLayout>

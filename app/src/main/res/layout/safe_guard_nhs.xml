@@ -1,0 +1,191 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.ccg.banana.ccg.Fragments.FragmentB">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/msgBoard"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+
+            android:background="@color/dark_pink"
+            android:orientation="vertical"
+
+            android:paddingLeft="@dimen/dimen_20"
+            android:paddingRight="@dimen/dimen_20">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_10"
+
+                app:srcCompat="@mipmap/nhs" />
+
+            <TextView
+                android:id="@+id/msgBoardTxt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/childrenAdult"
+
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_15" />
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/scrollView_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_marginRight="@dimen/dimen_10"
+                    android:layout_marginTop="@dimen/dimen_30"
+                    android:background="@color/white"
+
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/safeGuarding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dimen_2"
+                        android:layout_weight="1"
+                        android:background="@drawable/my_safe_guarding_background"
+                        android:text="@string/safeGuardingAdults"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dimen_15" />
+
+                    <Button
+
+                        android:id="@+id/childProtection"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:layout_weight="1"
+                        android:background="@drawable/my_child_guarding_background"
+                        android:text="@string/safeGuardingChildren"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dimen_15" />
+                </LinearLayout>
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dimen_30"
+                    android:gravity="center"
+                    android:text="@string/contactResource"
+                    android:textColor="@color/dark_black"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_marginRight="@dimen/dimen_10"
+                    android:layout_marginTop="@dimen/dimen_20"
+                    android:background="@drawable/my_custom_background_row"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimen_15"
+                        android:orientation="vertical">
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimen_5"
+                            android:layout_marginRight="@dimen/dimen_5"
+                            android:layout_marginTop="@dimen/dimen_10"
+                            android:text="@string/contactPerson"
+                            android:textColor="@color/dark_pink"
+                            android:textSize="15sp" />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimen_5"
+                            android:layout_marginRight="@dimen/dimen_5"
+                            android:layout_marginTop="@dimen/dimen_3"
+                            android:text="@string/contactAddress"
+                            android:textColor="@color/cement"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tellContact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimen_5"
+                            android:layout_marginRight="@dimen/dimen_5"
+                            android:layout_marginTop="@dimen/dimen_3"
+                            android:text="@string/telContact"
+                            android:textColor="@color/cement"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/mobileContact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimen_5"
+                            android:layout_marginRight="@dimen/dimen_5"
+                            android:layout_marginTop="@dimen/dimen_3"
+                            android:text="@string/mobContact"
+                            android:textColor="@color/cement"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/dimen_10"
+                            android:layout_marginLeft="@dimen/dimen_5"
+                            android:layout_marginRight="@dimen/dimen_5"
+                            android:layout_marginTop="@dimen/dimen_3"
+                            android:text="@string/email"
+                            android:textColor="@color/cement"
+                            android:textSize="15sp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</FrameLayout>

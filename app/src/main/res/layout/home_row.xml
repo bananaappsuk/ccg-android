@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:background="@drawable/my_custom_background_row"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:orientation="horizontal">
+  <!--      <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/photo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@mipmap/user"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="0dp" />-->
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:textColor="@color/dark_pink"
+                android:layout_marginRight="@dimen/dimen_5"
+                android:text="Date"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/day"
+                android:layout_width="wrap_content"
+                android:textColor="@color/dark_pink"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_marginRight="@dimen/dimen_5"
+                android:text="Day"
+                android:textSize="15sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:textColor="@color/cement"
+                android:layout_marginRight="@dimen/dimen_5"
+                android:text="Stock Request"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/test"
+                android:layout_width="wrap_content"
+                android:textColor="@color/dark_pink"
+
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_marginRight="@dimen/dimen_5"
+                android:text="Stock Request"
+                android:textSize="15sp"
+                />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:textColor="@color/cement"
+
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_5"
+        android:layout_weight="1"
+
+        android:text="Stock Request"
+        android:textSize="15sp"
+        />
+    <TextView
+android:id="@+id/loation"
+        android:layout_width="wrap_content"
+        android:textColor="@color/cement"
+        android:drawableLeft="@mipmap/location"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_5"
+        android:layout_weight="1"
+
+        android:text=""
+        android:textSize="15sp"
+        />
+</LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+<!--
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:id="@+id/line2"
+        android:layout_marginTop="@dimen/dimen_5"
+        android:layout_below="@+id/listSubCategory"
+        android:background="#c0c0c0"/>-->
+
+
+</LinearLayout>
+

@@ -1,0 +1,295 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.ccg.banana.ccg.Fragments.FragmentA">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_pink"
+
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textSize="@dimen/dimen_20"
+            android:textColor="@color/white"
+            android:text="@string/hi" />
+        <TextView
+            android:id="@+id/homeDesc"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_40"
+            android:visibility="gone"
+            android:layout_marginRight="@dimen/dimen_40"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/gray"
+            android:text="@string/homeDesc" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:layout_marginBottom="@dimen/dimen_5"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/msgBoard">
+                <RelativeLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@mipmap/message" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/dimen_5"
+                    android:paddingRight="@dimen/dimen_10">
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@drawable/circle" />
+                    <TextView
+                        android:id="@+id/MessageCount"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:textColor="@color/gray"
+                        android:text="10" />
+                </RelativeLayout>
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/msgBoardTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:textColor="@color/gray"
+                    android:text="@string/msgBoard" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/training">
+                <RelativeLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@mipmap/training" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="@dimen/dimen_5"
+                        android:paddingRight="@dimen/dimen_10">
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="center_horizontal"
+                            app:srcCompat="@drawable/circle" />
+                        <TextView
+                            android:id="@+id/TraningCount"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:textColor="@color/gray"
+                            android:text="10" />
+                    </RelativeLayout>
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/msgTrainingTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:textColor="@color/gray"
+                    android:text="@string/training" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/jobs">
+                <RelativeLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@mipmap/jobs" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="@dimen/dimen_5"
+                        android:paddingRight="@dimen/dimen_10">
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="center_horizontal"
+                            app:srcCompat="@drawable/circle" />
+                        <TextView
+                            android:id="@+id/JobCount"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:textColor="@color/gray"
+                            android:text="10" />
+                    </RelativeLayout>
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/jobTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:textColor="@color/gray"
+                    android:text="@string/jobs" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/events">
+                <RelativeLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@mipmap/events" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="@dimen/dimen_5"
+                        android:paddingRight="@dimen/dimen_10">
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="center_horizontal"
+                            app:srcCompat="@drawable/circle" />
+                        <TextView
+                            android:id="@+id/EventCount"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:textColor="@color/gray"
+                            android:text="10" />
+                    </RelativeLayout>
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/eventTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:textColor="@color/gray"
+                    android:text="@string/events" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/heading"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/dark_pink"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/safeGuarding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/strokeLine"
+                android:textColor="@color/cement"
+                android:layout_weight="1"
+                android:layout_marginBottom="@dimen/dimen_2"
+                android:textAllCaps="false"
+                android:text="@string/safeGuarding" />
+            <Button
+                android:layout_marginLeft="@dimen/dimen_1"
+                android:id="@+id/childProtection"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/strokeLine"
+                android:textColor="@color/cement"
+                android:text="@string/childProtection" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/myBooking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+android:textSize="@dimen/dimen_20"
+            android:textColor="@color/dark_black"
+            android:text="@string/myBooking" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_govt"
+            android:background="@color/white"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical" />
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

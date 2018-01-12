@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:orientation="horizontal"
+
+            android:background="@color/white">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp">
+
+                <TextView
+                    android:id="@+id/msgTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textStyle="bold"
+                    android:textSize="@dimen/dimen_15"
+                    android:textColor="@color/dark_black"
+                    style="@android:style/TextAppearance.DeviceDefault.Medium" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="start"
+
+                    android:gravity="start">
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/dark_pink"
+                        android:inputType="text"
+                        />
+                    <TextView
+                        android:id="@+id/dots"
+                        android:layout_width="wrap_content"
+
+
+                        android:ems="1"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_pink"
+                        android:text="  " />
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="@dimen/dimen_10"
+                        android:text=""
+                        android:gravity="center"
+                        android:textColor="@color/dark_black"
+
+                        android:inputType="text"
+
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:alpha=".2"
+            android:background="@color/cement"
+            android:layout_height="3dp"/>
+
+</LinearLayout>

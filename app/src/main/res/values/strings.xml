@@ -1,0 +1,143 @@
+<resources>
+    <string name="app_name">CCG</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+
+    <string name="agree">I agree to <u>terms and conditions</u></string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="apply">Apply</string>
+    <string name="forgot">Forgot password</string>
+
+    <string name="dontHaveMail">If you dont have Email ID contact</string>
+    <string name="purva">Ms. Purva  : 07426112386</string>
+
+
+    <string name="welcome">Welcome to Chosen Care Group staff portal</string>
+
+    <string name="see">See whats happening in your organisation right now</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Profile</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_more">More</string>
+
+    <string name="heading">Chosen Care Group</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="homeDesc">You have 5 messages, 3 training and 4 vacancies since your last visit.</string>
+    <string name="hi">Hi Srinivas</string>
+    <string name="msgBoard">Message</string>
+    <string name="messageBoard">Message Board</string>
+    <string name="training">Training</string>
+    <string name="jobs">Jobs</string>
+    <string name="events">Events</string>
+
+    <string name="safeGuarding">Safe Guarding</string>
+    <string name="childProtection">Child Protection</string>
+
+
+    <string name="myBooking">My Activities</string>
+    <string name="title">Title goes here</string>
+
+    <string name="editProfile">Edit profile</string>
+    <string name="tit">Title : </string>
+    <string name="phone">Phone : </string>
+    <string name="changePassword">Change password</string>
+    <string name="profile">Profile</string>
+
+    <string name="currentPwd">Current Password</string>
+    <string name="newPwd">New Password</string>
+    <string name="cnfPwd">Confirm Password</string>
+    <string name="Submit">Submit</string>
+    <string name="text_take_photo">Take Photo</string>
+    <string name="text_choose_from_gallery">Choose from Gallery</string>
+    <string name="text_add_photo">Add Photo!</string>
+    <string name="cancel">Cancel</string>
+    <string name="text_permission_necessary">Permission necessary</string>
+    <string name="text_external_storage_permission_is_necessary">External storage permission is necessary</string>
+    <string name="text_select_file">Select File</string>
+
+    <string name="totMsg">You have 4 messages in total.</string>
+
+    <string name="comment">Comment</string>
+    <string name="allComments">Show all comments</string>
+    <string name="send">Send</string>
+
+    <string name="trining">Training</string>
+
+    <string name="contactOrganiser">Contact - Organiser</string>
+    <string name="address">Address</string>
+    <string name="description">Description</string>
+
+    <string name="registerText">Are you sure you want register ?</string>
+    <string name="login_terms">By downloading or using the app, these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the app. We are offering you this app to use for your own personal use without cost, but you should be aware that you cannot send it on to anyone else, and you’re not allowed to copy, or modify the app, any part of the app, or our trademarks in any way. You’re not allowed to attempt to extract the source code of the app, and you also shouldn’t try to translate the app into other languages, or make derivative versions. The app itself, and all the trade marks, copyright, database rights and other intellectual property rights related to it, still belong to Chosen Care Group. +
+                        "\n" + "Chosen care Group is committed to ensuring that the app is as useful and efficient as possible. For that reason, we reserve the right to make changes to the app or to charge for its services, at any time and for any reason. We will never charge you for the app or its services.\n" +
+                        "\n" +   "The Chosen Care Group app stores and processes personal data that you have provided to us so that you can book trainings or events. It’s your responsibility to keep your phone and access to the app secure. We therefore recommend that you do not jailbreak or root your phone, which is the process of removing software restrictions and limitations imposed by the official operating system of your device. It could make your phone vulnerable to malware/viruses/malicious programs, compromise your phone’s security features and it could mean that the Chosen Care Group app won’t work properly or at all. \n" +
+                        "\n" +
+                        "The connection can be Wi-Fi, or provided by your mobile network provider, but Chosen Care Group cannot take responsibility for the app not working at full functionality if you don’t have access to Wi-Fi, and you don’t have any of your data allowance left.\n" +
+                        "\n" +
+                        "If you’re using the app outside of an area with Wi-Fi, you should remember that your terms of agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third-party charges. In using the app, you’re accepting responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you’re using the app, please be aware that we assume that you have received permission from the bill payer for using the app.\n" +
+                        "\n" +
+                        "Along the same lines, Chosen Care Group cannot always take responsibility for the way you use the app. At some point we may wish to update the app. The app is currently available on Android and iOS – the requirements for both systems (and for any additional systems we decide to extend the availability of the app to) may change, and you’ll need to download the updates if you want to keep using the app. \n" +
+                        "Chosen Care Group does not promise that it will always update the app so that it is relevant to you and/or works with the iOS/Android version that you have installed on your device. However, you promise to always accept updates to the application when offered to you, we may also wish to stop providing the app, and may terminate use of it at any time without giving notice of termination to you. Unless we tell you otherwise, upon any termination, (a) the rights and licenses granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.\n</string>
+    <string name="photos">Photos</string>
+
+    <string name="friends">Let your friends about the vacancy</string>
+
+    <string name="childrenAdult">Safe Guarding Adults and Children</string>
+
+    <string name="safeGuardingAdults">Safeguarding Adults Guide</string>
+    <string name="safeGuardingChildren">Safeguarding Children and Yound Person Guide</string>
+
+    <string name="contactResource">Contacts and Resources</string>
+
+    <string name="contactPerson">MR ASAD ABDULLAH</string>
+    <string name="contactAddress">Registered Manager</string>
+    <string name="telContact">T - 02036595052</string>
+    <string name="mobContact">M - 07540250482</string>
+    <string name="email">E - asad@chosencare</string>
+
+    <string name="safeGuardingAdult">Safe Guarding Adults</string>
+    <string name="safeGuardingChildre">Safeguarding Children and Yound Person</string>
+    <string name="contact">Contact</string>
+
+    <string name="aboutUs">About us</string>
+    <string name="contactUs">Contact us</string>
+    <string name="feedback">Feedback</string>
+    <string name="logout">Logout</string>
+
+    <string name="aboutUsText">Chosen Care Group Ltd is an experienced Domiciliary Care provider, offering services to a wide range of clients, including those eligible for Continuing Healthcare (CHC) funding. Since 2012, we have supported more than 300 service users and delivered over 125,000 hours of CARE. We provide care in 5 boroughs Redbridge, Walthamforest, Barking and Dagenham, Newham and Havering. \n
+        \nChosen Care Group Training division registered with Edexcel, City and Guilds, and NCFE as an approved provider of health and social care qualifications from levels 1 to 5. This means that we can quickly arrange training to meet the changing needs of service users. \n
+\nOur person-centred services fully involve service users and carers to ensure that the care and support we provide enhances quality of life whilst helping people to recover. We carefully recruit the best staff and train and support them effectively, to ensure that people have a positive experience of care. We provide safe services by promoting an open culture, underpinned by staff training, policies and processes based on best practice, effective care planning and risk management. \n
+\nThrough integrated multidisciplinary working, we help people to recover from illness or injury. We deliver care in Tiers 1-3 and nursing care, and utilise person-centred care planning, so that service users have maximum choice and control over their care plan development and delivery. \n
+\nOur team has been forming and sustaining integrated approaches for over 25 years, based on the 3 principles of information sharing, joint decision-making, and coordinated intervention. Our approach is to engage with partners to discuss how we will work together to optimise care, reduce risks and avoid duplication, thereby maximising value for money. \n
+\nWhen we accept a referral for a new service user, we assign a named representative, responsible for coordinating care and for communicating with other agencies. Their details are given to the person's GP, District Nurse, and other professionals involved in their care. \n
+\nWe integrate with Community Health Services by taking a multidisciplinary (MDT) approach to care planning and delivery, as demonstrated by the following case study. \n
+\nWhen our service users use acute or tertiary care, we help them to access appointments, including accompanying them, subject to their care needs and appropriate risk assessment. Before the appointment, we alert the provider if the service user has any communication \n
+\nNeeds or access requirements. We continue to accompany the service user to appointments up to the point of admission, where we share any advanced decisions with the acute provider. We inform the service user's family, our commissioners and the service user's GP about their admission. \n
+\nWe maintain continuity of care on release by assigning regular workers to temporary duties during the hospital stay, so that they can provide support on discharge, contributing to a positive experience of care. \n
+\nWe enable our service users to access the full range of primary care health services, by ensuring they are registered with a GP, and attend regular check-ups and medication reviews. We contact primary healthcare teams as soon as possible if there is a change in the service user's condition, such as new symptoms, so that they can receive treatment as quickly as possible. We build up good relationships with Primary Care Practices, so that we can ask for advice, for example, if a service user needs to be seen by a GP, or whether a pharmacist would be able to offer help and advice. This makes the best use of resources. \n
+\nMembers of the wider primary care team, such as GPs, often contribute to a care package. Where this is the case, we support integrated delivery, and alert to any changes in condition. We do this by making direct contact, and arranging multi-disciplinary reviews of the person's care plan. \n
+\nWe often work with social care as part of an MDT, if we think that a service user has an unmet social care need, one of our own Social Service Managers will contact the local social work team to make a referral. \n
+\nWe specialise in Case Management service: Case management is a well-established way of integrating services around the complex needs of people with long-term conditions. It is a targeted, community-based and pro-active approach that identifies individuals at high risk of hospital admission, assesses their needs, produces a personal care plan, and ensures co-ordination of that plan \n
+\nChosen Care Group Ltd specialise in brain and spinal injury, we work with families, solicitors and other professionals to offer a comprehensive case management service tailored to the needs of the client, the family and the medico-legal process We have a profile of over 200 support staff, with approximately 80% of these on duty at any one time. We also have a bank of over 100 staff that we can call upon for new service users. This gives us sufficient flexibility to maximise staff continuity without conflicting demands. \n
+\nWe offer a 24/7 service with a designated on-call rota outside of office hours. We use the People Planner monitoring, scheduling and management system to record and mange real-time information covering all aspects of service provision, and to provide us with details to support staff allocations and continuity of care analysis. \n
+</string>
+
+    <string name="contactDetails">Contact Details</string>
+
+    <string name="HeadOffice">Head Office</string>
+    <string name="HeadOfficeaddress">Chosen Care Group Ltd, \nSuite 9, \nCranbrook road, \nIlford, IG1 4PG</string>
+    <string name="BournemouthOffice">Bournemouth Office</string>
+    <string name="BournemouthOfficeaddress">Arena Business Centre, \n9 Nimrod way, \nDorest, BH 217SH</string>
+
+
+    <string name="general">General: info@chosencaregroup.com \nLooking for Care Job: hr@chosencaregroup.com \n\nFinance: finance@chosencaregroup.com \nComplaints/ Comments: complaint@chosencaregroup.com \nT: 02036595052 \nF: 02081816641</string>
+    <string name="facebook_app_id">929205607231602</string>
+
+    <string name="mail">E - mail</string>
+</resources>

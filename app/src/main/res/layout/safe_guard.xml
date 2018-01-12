@@ -1,0 +1,82 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.ccg.banana.ccg.Fragments.FragmentB">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+
+        android:background="@color/dark_pink"
+      android:paddingLeft="@dimen/dimen_20"
+        android:paddingRight="@dimen/dimen_20"
+        android:id="@+id/msgBoard">
+        <TextView
+            android:id="@+id/msgBoardTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/dimen_20"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+
+            android:textColor="@color/gray"
+            android:text="@string/safeGuarding" />
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+
+            app:srcCompat="@mipmap/safe" />
+
+
+    </LinearLayout>
+<!--
+        <TextView
+            android:id="@+id/tilte"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:layout_marginLeft="@dimen/dimen_20"
+            android:textSize="@dimen/dimen_20"
+
+            android:layout_gravity="center_vertical"
+
+            android:textColor="@color/dark_pink"
+            android:text="@string/title" />
+        <TextView
+            android:id="@+id/text"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:layout_marginLeft="@dimen/dimen_20"
+            android:layout_marginRight="@dimen/dimen_20"
+            android:textSize="@dimen/dimen_15"
+
+            android:layout_gravity="center_vertical"
+
+            android:textColor="@color/cement"
+            android:text="Text messaging and emails can help improve the success of rowing clubs, affiliated organisations and juniorprogrammes. This may be by helping to remind \n\n young people about the sport and activity sessions that they have signed up to, and by promoting additional activities.The significant benefit of text messaging and emails are that they are not only cheap, but they are one of the mostdirect forms of communication as most young people have mobile phones with them at all times and are
+competent at using computer" />
+-->
+        <WebView
+            android:id="@+id/webView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="42dp" />
+    </LinearLayout>
+</FrameLayout>
