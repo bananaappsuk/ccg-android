@@ -225,7 +225,7 @@
             android:layout_height="fill_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/changePassword"
@@ -254,70 +254,113 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/curPwd"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/dimen_20"
-                android:layout_marginRight="@dimen/dimen_20"
-                android:background="@color/light_gray"
-                android:gravity="center"
-                android:hint="@string/currentPwd"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:paddingLeft="@dimen/dimen_40"
-                android:paddingRight="@dimen/dimen_40"
-                android:singleLine="true"
-                android:text=""
-                android:textColor="@color/dark_pink"
-                android:textColorHint="@color/dark_pink"
-                android:textSize="@dimen/dimen_15" />
+    <EditText
+        android:id="@+id/curPwd"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/dimen_20"
+        android:background="@color/light_gray"
+        android:gravity="center"
+        android:ems="6"
+        android:layout_weight="1"
+        android:hint="@string/currentPwd"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/dark_pink"
+        android:textColorHint="@color/dark_pink"
+        android:textSize="@dimen/dimen_15" />
+
+    <ImageView
+        android:layout_weight="0"
+        android:paddingRight="@dimen/dimen_10"
+        android:id="@+id/show"
+        android:layout_width="40sp"
+        android:layout_height="30sp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/view"
+        />
+</LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/newPwd"
-                android:layout_width="fill_parent"
+                android:layout_marginTop="@dimen/dimen_3"
+                android:hint="@string/newPwd"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/dimen_20"
-                android:layout_marginRight="@dimen/dimen_20"
-                android:layout_marginTop="@dimen/dimen_3"
                 android:background="@color/light_gray"
                 android:gravity="center"
-                android:hint="@string/newPwd"
+                android:ems="6"
+                android:layout_weight="1"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:paddingLeft="@dimen/dimen_40"
-                android:paddingRight="@dimen/dimen_40"
                 android:singleLine="true"
                 android:text=""
                 android:textColor="@color/dark_pink"
                 android:textColorHint="@color/dark_pink"
-                android:textSize="@dimen/dimen_15" />
-
+                android:textSize="@dimen/dimen_15"
+                />
+                <ImageView
+                    android:layout_weight="0"
+                    android:paddingRight="@dimen/dimen_10"
+                    android:id="@+id/showNew"
+                    android:layout_width="40sp"
+                    android:layout_height="30sp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/view"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
             <EditText
                 android:id="@+id/cnfPwd"
-                android:layout_width="fill_parent"
+                android:hint="@string/cnfPwd"
+                android:paddingLeft="@dimen/dimen_40"
+                android:paddingRight="@dimen/dimen_40"
+                android:layout_marginTop="@dimen/dimen_3"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/dimen_20"
-                android:layout_marginRight="@dimen/dimen_20"
-                android:layout_marginTop="@dimen/dimen_3"
                 android:background="@color/light_gray"
                 android:gravity="center"
-                android:hint="@string/cnfPwd"
+                android:ems="6"
+                android:layout_weight="1"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:paddingLeft="@dimen/dimen_40"
-                android:paddingRight="@dimen/dimen_40"
                 android:singleLine="true"
                 android:text=""
                 android:textColor="@color/dark_pink"
                 android:textColorHint="@color/dark_pink"
-                android:textSize="@dimen/dimen_15" />
-
+                android:textSize="@dimen/dimen_15"
+                />
+                <ImageView
+                    android:layout_weight="0"
+                    android:paddingRight="@dimen/dimen_10"
+                    android:id="@+id/showConfirm"
+                    android:layout_width="40sp"
+                    android:layout_height="30sp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/view"
+                    />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -353,7 +396,7 @@
                     android:layout_marginTop="@dimen/dimen_3"
 
                     android:gravity="center"
-                    android:hint="@string/password"
+
                     android:maxLines="1"
                     android:paddingLeft="@dimen/dimen_40"
                     android:paddingRight="@dimen/dimen_40"

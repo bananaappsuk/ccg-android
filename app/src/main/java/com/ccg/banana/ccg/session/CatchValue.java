@@ -30,4 +30,6 @@ public class CatchValue {
 
     public static final String BackArrowRecall ="BackArrowRecall";
 
+    public static final String onBackPressed ="onBackPressed";
+
 }

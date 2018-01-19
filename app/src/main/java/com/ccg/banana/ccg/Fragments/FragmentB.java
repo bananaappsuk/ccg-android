@@ -19,6 +19,7 @@ import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -72,7 +73,7 @@ public class FragmentB extends Fragment {
     TextView changePassword;
     EditText curPwd,newPwd,cnfPwd,name,titleType;
     ProgressDialog progressDialog;
-    ImageView profileImg;
+    ImageView profileImg,show,showNew,showConfirm;
     Boolean isInternetPresent = false;
     ConnectionDetector cd;
     private String userChooseTask;
@@ -82,6 +83,9 @@ public class FragmentB extends Fragment {
     private static final int PERMISSION_REQUEST_CODE = 200;
     private OnFragmentInteractionListener mListener;
     static final Integer CAMERA = 0x1;
+    Boolean showFlag = false;
+    Boolean showFlagNew = false;
+    Boolean showFlagConfirm = false;
     public FragmentB() {
         // Required empty public constructor
     }
@@ -137,6 +141,8 @@ public class FragmentB extends Fragment {
         newPwd = (EditText) v.findViewById(R.id.newPwd);
         cnfPwd = (EditText) v.findViewById(R.id.cnfPwd);
 
+
+
         Cache.putData(CatchValue.BackArrow, getContext(), "FragmentB", Cache.CACHE_LOCATION_DISK);
         ((Home)getActivity()).BackArrowMethod();
 
@@ -144,6 +150,59 @@ public class FragmentB extends Fragment {
         editLayout = (LinearLayout)v.findViewById(R.id.editLayout);
 
         profileImg = (ImageView)v.findViewById(R.id.profileImg);
+        showConfirm = (ImageView)v.findViewById(R.id.showConfirm);
+        showNew = (ImageView)v.findViewById(R.id.showNew);
+        show = (ImageView)v.findViewById(R.id.show);
+
+        show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(showFlag.equals(false)) {
+                    curPwd.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    showFlag = true;
+                }
+                else
+                {
+                    showFlag = false;
+                    curPwd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+
+            }
+        });
+
+        showNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(showFlagNew.equals(false)) {
+                    newPwd.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    showFlagNew = true;
+                }
+                else
+                {
+                    showFlagNew = false;
+                    newPwd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+
+            }
+        });
+
+        showConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(showFlagConfirm.equals(false)) {
+                    cnfPwd.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    showFlagConfirm = true;
+                }
+                else
+                {
+                    showFlagConfirm = false;
+                    cnfPwd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+
+            }
+        });
+
+
         name.setEnabled(false);
         titleType.setEnabled(false);
         String pImag = ((String) Cache.getData(CatchValue.User_Pic,getContext()));

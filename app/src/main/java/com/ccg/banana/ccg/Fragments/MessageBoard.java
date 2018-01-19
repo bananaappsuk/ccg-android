@@ -125,7 +125,6 @@ public class MessageBoard extends Fragment {
         cd = new ConnectionDetector(getContext());
         Cache.putData(CatchValue.BackArrow, getContext(), "MessageBoard", Cache.CACHE_LOCATION_DISK);
         ((Home) getActivity()).BackArrowMethod();
-
         String BackArrowRecall = ((String) Cache.getData(CatchValue.BackArrowRecall, getContext()));
         if(BackArrowRecall.equalsIgnoreCase("BackArrowRecall"))
         {
@@ -133,18 +132,12 @@ public class MessageBoard extends Fragment {
             ShowData();
         }
 else {
-
-            //  isInternetPresent = cd.isConnectionAvailable();
-
             isInternetPresent = cd.isConnectionAvailable();
             if (isInternetPresent) {
                 new MessageBoardData().execute(sid);
             } else {
                 ShowNoInternetDialog();
             }
-
-
-            // Inflate the layout for this fragment
 
         }
         return v;

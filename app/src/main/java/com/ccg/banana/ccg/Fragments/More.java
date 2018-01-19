@@ -136,6 +136,7 @@ LinearLayout aboutUs,contacUs,logout,feedback;
                                 Cache.putData(CatchValue.USER_NAME, getContext(), "", Cache.CACHE_LOCATION_DISK);
                                 Cache.putData(CatchValue.password, getContext(), "", Cache.CACHE_LOCATION_DISK);
                                 Cache.putData(CatchValue.Safe, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                                Cache.putData(CatchValue.onBackPressed, getContext(), "", Cache.CACHE_LOCATION_DISK);
 
                                 Intent intent = new Intent(getContext(), Login.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
