@@ -1,6 +1,8 @@
 package com.ccg.banana.ccg.Fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -108,21 +110,53 @@ LinearLayout aboutUs,contacUs,logout,feedback;
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cache.putData(CatchValue.Email, getContext(), "", Cache.CACHE_LOCATION_DISK);
-                Cache.putData(CatchValue.Mobile, getContext(), "", Cache.CACHE_LOCATION_DISK);
-                Cache.putData(CatchValue.Name, getContext(), "", Cache.CACHE_LOCATION_DISK);
-                Cache.putData(CatchValue.Title, getContext(), "", Cache.CACHE_LOCATION_DISK);
-                Cache.putData(CatchValue.User_Pic, getContext(), "", Cache.CACHE_LOCATION_DISK);
-                Cache.putData(CatchValue.ID, getContext(), "", Cache.CACHE_LOCATION_DISK);
-                Cache.putData(CatchValue.BackArrow, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                //Uncomment the below code to Set the message and title from the strings.xml file
+                //builder.setMessage(R.string.dialog_message) .setTitle(R.string.dialog_title);
 
-                Cache.putData(CatchValue.USER_NAME, getContext(), "", Cache.CACHE_LOCATION_DISK);
-                Cache.putData(CatchValue.password, getContext(), "", Cache.CACHE_LOCATION_DISK);
-                Cache.putData(CatchValue.Safe, getContext(), "", Cache.CACHE_LOCATION_DISK);
 
-                Intent intent = new Intent(getContext(), Login.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                //Setting message manually and performing action on button click
+                builder.setMessage("Are you sure you want logout ?")
+                        .setCancelable(false)
+                        .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        })
+                        .setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Cache.putData(CatchValue.Email, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                                Cache.putData(CatchValue.Mobile, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                                Cache.putData(CatchValue.Name, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                                Cache.putData(CatchValue.Title, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                                Cache.putData(CatchValue.User_Pic, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                                Cache.putData(CatchValue.ID, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                                Cache.putData(CatchValue.BackArrow, getContext(), "", Cache.CACHE_LOCATION_DISK);
+
+                                Cache.putData(CatchValue.USER_NAME, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                                Cache.putData(CatchValue.password, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                                Cache.putData(CatchValue.Safe, getContext(), "", Cache.CACHE_LOCATION_DISK);
+
+                                Intent intent = new Intent(getContext(), Login.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+
+                                // Action for 'NO' Button
+                         /* Intent i2 = new Intent(getApplicationContext(), Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(i2);
+                            */
+                            }
+                        });
+
+                //Creating dialog box
+                AlertDialog alert = builder.create();
+                //Setting the title manually
+                alert.setTitle("CCG");
+
+                alert.show();
+
+
+
             }
         });
 
