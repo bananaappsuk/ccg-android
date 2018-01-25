@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -70,16 +71,25 @@ public class Login extends BaseActivity  {
         agreeImg = (ImageView) findViewById(R.id.agreeImg);
         loginImg = (ImageView) findViewById(R.id.loginImg);
 
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "Quicksand-Regular.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "hel_medium.ttf");
         username.setTypeface(custom_font);
         password.setTypeface(custom_font);
 
-        custom_font = Typeface.createFromAsset(getAssets(), "Quicksand-Bold.ttf");
+        String userN = ((String) Cache.getData(CatchValue.USER_NAME,this));
+      //  showToast("username "+userN);
+        if(!TextUtils.isEmpty(userN))
+        {
+           // showToast("username "+userN);
+            username.setText(userN);
+            password.setText((String) Cache.getData(CatchValue.password,this));
+        }
+
+        custom_font = Typeface.createFromAsset(getAssets(), "hel_bold.ttf");
         agree.setTypeface(custom_font);
         login.setTypeface(custom_font);
         forgot.setTypeface(custom_font);
 
-        custom_font = Typeface.createFromAsset(getAssets(), "Quicksand-Bold.ttf");
+        custom_font = Typeface.createFromAsset(getAssets(), "hel_medium.ttf");
         welcome.setTypeface(custom_font);
         see.setTypeface(custom_font);
 
@@ -252,7 +262,7 @@ public class Login extends BaseActivity  {
                 JSONObject jObject = new JSONObject();
                 jObject.put("Username", params[0]);
                 jObject.put("Password", params[1]);
-                response = new ServiceClass().getJsonObjectResponse(jObject,"http://ccg.bananaappscenter.com/api/User/Login");
+                response = new ServiceClass().getJsonObjectResponseTest(jObject,"http://ccg.bananaappscenter.com/api/User/Login");
             } catch (JSONException e) {
                 showToast("Server couldn't respond,Please try again");
             }
@@ -266,7 +276,7 @@ public class Login extends BaseActivity  {
                 gerLoginResponse(response);
             }
             else {
-                showToast("Server couldn't respond,Please try again 222");
+                showToast("Server couldn't respond,Please try again");
             }
         }
 
@@ -275,10 +285,10 @@ public class Login extends BaseActivity  {
 
     private void gerLoginResponse(Report response) {
         try {
-        /*    Log.e("Response "," "+response);
+           // Log.e("Response "," "+response);
 
             resultJsonObject = response.getJsonObject();
-            Log.e("Response "," "+resultJsonObject);*/
+          //  Log.e("Response "," "+resultJsonObject);
             if (response.getStatus().equalsIgnoreCase("true")) {
                 resultJsonObject = response.getJsonObject();
                 if(resultJsonObject.length()>0&&resultJsonObject!=null) {
@@ -294,6 +304,8 @@ public class Login extends BaseActivity  {
                             Cache.putData(CatchValue.Mobile, getApplicationContext(), resultJsonObject.getString("Mobile"), Cache.CACHE_LOCATION_DISK);
                             Cache.putData(CatchValue.Name, getApplicationContext(), resultJsonObject.getString("Name"), Cache.CACHE_LOCATION_DISK);
                             Cache.putData(CatchValue.Title, getApplicationContext(), resultJsonObject.getString("Title"), Cache.CACHE_LOCATION_DISK);
+                            Cache.putData(CatchValue.LastName, getApplicationContext(), resultJsonObject.getString("LastName"), Cache.CACHE_LOCATION_DISK);
+                            Cache.putData(CatchValue.Username, getApplicationContext(), resultJsonObject.getString("Username"), Cache.CACHE_LOCATION_DISK);
                             Cache.putData(CatchValue.User_Pic, getApplicationContext(), resultJsonObject.getString("User_Pic"), Cache.CACHE_LOCATION_DISK);
                             Cache.putData(CatchValue.ID, getApplicationContext(), resultJsonObject.getString("ID"), Cache.CACHE_LOCATION_DISK);
                             Cache.putData(CatchValue.BackArrow, getApplicationContext(), "Hide", Cache.CACHE_LOCATION_DISK);
@@ -340,7 +352,8 @@ public class Login extends BaseActivity  {
 
             else {
 
-               /* resultJsonObject = response.getJsonObject();
+                /*resultJsonObject = response.getJsonObject();
+                Log.e("250118",""+resultJsonObject);
                 resultJsonObject.getString("Message");*/
                 showToast("Invalid credentials. ");
            /*     if ((response.getStatus().equalsIgnoreCase("false"))) {
@@ -361,10 +374,16 @@ public class Login extends BaseActivity  {
                 }*/
             }
         } catch (JSONException ex) {
-
-            showToast("Server couldn't respond,Please try again");
+            try{
+                resultJsonObject = response.getJsonObject();
+                //Log.e("250118",""+resultJsonObject);
+                //String s = resultJsonObject.getString("Message");
+                showToast(resultJsonObject.getString("Message"));
+            }catch (Exception e)
+            {
+                showToast("Server couldn't respond,Please try again");
+            }
         }
-
     }
 
    }

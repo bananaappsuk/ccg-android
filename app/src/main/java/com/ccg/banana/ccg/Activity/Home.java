@@ -254,8 +254,8 @@ ImageView backArrow,drProfileImg;
                                                         Cache.putData(CatchValue.ID, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
                                                         Cache.putData(CatchValue.BackArrow, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
 
-                                                        Cache.putData(CatchValue.USER_NAME, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
-                                                        Cache.putData(CatchValue.password, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
+                                                     //   Cache.putData(CatchValue.USER_NAME, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
+                                                      //  Cache.putData(CatchValue.password, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
                                                         Cache.putData(CatchValue.Safe, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
                                                         Cache.putData(CatchValue.onBackPressed, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
 
@@ -313,7 +313,7 @@ ImageView backArrow,drProfileImg;
 
         heading = (TextView) findViewById(R.id.heading);
 
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "Quicksand-Bold.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "hel_bold.ttf");
         heading.setTypeface(custom_font);
 
         // mTextMessage = (TextView) findViewById(R.id.message);

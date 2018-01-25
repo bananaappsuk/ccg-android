@@ -120,9 +120,9 @@ public class CommentMessageAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         TextView txtRating = shopListViewHolder.getTxtRating();
         TextView txtBook = shopListViewHolder.getDate();
         TextView txtDescription = shopListViewHolder.getDescription();
-        Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "Quicksand-Bold.ttf");
+        Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "hel_bold.ttf");
         txtItemName.setTypeface(custom_font);
-        custom_font = Typeface.createFromAsset(context.getAssets(), "Quicksand-Regular.ttf");
+        custom_font = Typeface.createFromAsset(context.getAssets(), "hel_medium.ttf");
      //   txtRating.setTypeface(custom_font);
         txtBook.setTypeface(custom_font);
         txtDescription.setTypeface(custom_font);

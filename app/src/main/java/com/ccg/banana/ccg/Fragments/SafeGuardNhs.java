@@ -145,7 +145,7 @@ TextView msgBoardTxt;
     }
 
     private void init() {
-        Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "Quicksand-Regular.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "hel_bold.ttf");
         msgBoardTxt.setTypeface(custom_font);
     }
 

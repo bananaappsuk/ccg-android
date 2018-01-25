@@ -162,10 +162,10 @@ public class JobBoardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         TextView txtStartDate = shopListViewHolder.getStartDate();
      //   Collections.sort(hosDocLists, new CustomComparator());
 
-        Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "Quicksand-Bold.ttf");
+        Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "hel_bold.ttf");
         txtItemName.setTypeface(custom_font);
 
-        custom_font = Typeface.createFromAsset(context.getAssets(), "Quicksand-Regular.ttf");
+        custom_font = Typeface.createFromAsset(context.getAssets(), "hel_medium.ttf");
      //   txtItemName.setTypeface(custom_font);
         txtRating.setTypeface(custom_font);
         txtBook.setTypeface(custom_font);

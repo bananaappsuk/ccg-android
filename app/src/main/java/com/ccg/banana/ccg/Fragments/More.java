@@ -133,8 +133,8 @@ LinearLayout aboutUs,contacUs,logout,feedback;
                                 Cache.putData(CatchValue.ID, getContext(), "", Cache.CACHE_LOCATION_DISK);
                                 Cache.putData(CatchValue.BackArrow, getContext(), "", Cache.CACHE_LOCATION_DISK);
 
-                                Cache.putData(CatchValue.USER_NAME, getContext(), "", Cache.CACHE_LOCATION_DISK);
-                                Cache.putData(CatchValue.password, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                              //  Cache.putData(CatchValue.USER_NAME, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                             //   Cache.putData(CatchValue.password, getContext(), "", Cache.CACHE_LOCATION_DISK);
                                 Cache.putData(CatchValue.Safe, getContext(), "", Cache.CACHE_LOCATION_DISK);
                                 Cache.putData(CatchValue.onBackPressed, getContext(), "", Cache.CACHE_LOCATION_DISK);
 

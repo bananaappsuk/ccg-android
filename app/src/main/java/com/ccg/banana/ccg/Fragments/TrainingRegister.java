@@ -48,6 +48,8 @@ import com.ccg.banana.ccg.ServiceClass.Report;
 import com.ccg.banana.ccg.ServiceClass.ServiceClass;
 import com.ccg.banana.ccg.session.Cache;
 import com.ccg.banana.ccg.session.CatchValue;
+import com.davemorrissey.labs.subscaleview.ImageSource;
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -142,6 +144,9 @@ public class TrainingRegister extends Fragment {
         msgBoardTitle = (TextView)v.findViewById(R.id.msgBoardTitle);
         traineName = (TextView)v.findViewById(R.id.traineName);
         msgImage = (ImageView)v.findViewById(R.id.msgImage);
+
+
+
         register_button = (ImageView)v.findViewById(R.id.register_button);
         reg_success =(ImageView)v.findViewById(R.id.reg_success);
 
@@ -230,24 +235,31 @@ for(int k=0;k<=obj.getTrainingPhotoLists().size();k++)
 }
 if(Register_Status.equalsIgnoreCase("1"))
 {
-    register_button.setVisibility(View.GONE);
-    reg_success.setVisibility(View.VISIBLE);
-    login.setVisibility(View.GONE);
+ //   register_button.setVisibility(View.GONE);
+//    reg_success.setVisibility(View.VISIBLE);
+   // login.setVisibility(View.GONE);
+    login.setText("Un-Register");
 }
 else
 {
-    register_button.setVisibility(View.VISIBLE);
-    reg_success.setVisibility(View.GONE);
-    login.setVisibility(View.VISIBLE);
+  //  register_button.setVisibility(View.VISIBLE);
+ //   reg_success.setVisibility(View.GONE);
+   // login.setVisibility(View.VISIBLE);
+    login.setText("Register");
 }
 
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (login.getText().toString().trim().equalsIgnoreCase("Register")) {
+
+
+
                 ImageView descImage;
                 Button reg;
 
-                TextView sorryText,price,Title;
+                TextView sorryText, price, Title;
                 final Dialog dialog = new Dialog(getContext());
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -255,7 +267,7 @@ else
                 cancel = (Button) dialog.findViewById(R.id.cancel);
                 reg = (Button) dialog.findViewById(R.id.reg);
                 agreeImg = (ImageView) dialog.findViewById(R.id.agreeImg);
-                agree = (TextView)dialog.findViewById(R.id.agree);
+                agree = (TextView) dialog.findViewById(R.id.agree);
                 agreeImg.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -266,7 +278,6 @@ else
                             agreeImg.setImageResource(R.mipmap.uncheck);
                             tick_flag = false;
                         }
-
                     }
                 });
 
@@ -276,8 +287,6 @@ else
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                         //Uncomment the below code to Set the message and title from the strings.xml file
                         //builder.setMessage(R.string.dialog_message) .setTitle(R.string.dialog_title);
-
-
                         //Setting message manually and performing action on button click
                         builder.setMessage("•\tStaffshoulddiscusstheirdevelopmentneedsandattendanceonacoursewiththeirlinemanager.\n" +
                                 "\n" +
@@ -307,13 +316,7 @@ else
                                 startActivity(i2);*/
                                     }
                                 });
-                     /*   .setNegativeButton("Logout", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //  Action for 'NO' Button
-                                Intent i2 = new Intent(getApplicationContext(), Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(i2);
-                            }
-                        });*/
+
 
                         //Creating dialog box
                         AlertDialog alert = builder.create();
@@ -325,14 +328,14 @@ else
                 });
 
 
-                descImage= (ImageView)dialog.findViewById(R.id.descImage);
+                descImage = (ImageView) dialog.findViewById(R.id.descImage);
                 //      descImage.setImageBitmap(new DownloadImageTask(holder.title).execute(slots.getfImageurl()));
 
                 if (!TextUtils.isEmpty(ppic)) {
 
                     new DownLoadImageTask(descImage).execute(ppic);
                 } else {
-                   // holder.title.setImageResource(R.drawable.ic_edit_button);
+                    // holder.title.setImageResource(R.drawable.ic_edit_button);
                 }
 
           /*      sorryText = (TextView)dialog.findViewById(R.id.storeClosed);
@@ -342,41 +345,41 @@ else
                 String s = slots.getPrice();
                 sorryText.setText(holder.fItemNameDesc.getText());*/
 
-          reg.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
+                reg.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
-                  if (tick_flag == false) {
-                      //  AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(Login.this, R.style.AlertDialogCustom));
-                      AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                      builder.setMessage(Html.fromHtml("<font color='#FFFFFF'>Please agree terms and conditions.</font>"))
-                              .setCancelable(false)
+                        if (tick_flag == false) {
+                            //  AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(Login.this, R.style.AlertDialogCustom));
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                            builder.setMessage(Html.fromHtml("<font color='#FFFFFF'>Please agree terms and conditions.</font>"))
+                                    .setCancelable(false)
 
-                              .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                  public void onClick(DialogInterface dialog, int id) {
-                                      dialog.dismiss();
-                                  }
-                              });
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.dismiss();
+                                        }
+                                    });
 
-                      AlertDialog alert = builder.create();
+                            AlertDialog alert = builder.create();
 
-                      alert.setTitle(Html.fromHtml("<font color='#669E5D'>Terms and Conditions</font>"));
-                      alert.show();
-                  } else {
-                      isInternetPresent = cd.isConnectionAvailable();
-                      if (isInternetPresent) {
-                       //   showToast("success");
+                            alert.setTitle(Html.fromHtml("<font color='#669E5D'>Terms and Conditions</font>"));
+                            alert.show();
+                        } else {
+                            isInternetPresent = cd.isConnectionAvailable();
+                            if (isInternetPresent) {
+                                //   showToast("success");
 
-                          //   Log.e("11111 Traning_Id "," "+((String) Cache.getData(CatchValue.ID,getContext())));
-                          dialog.dismiss();
+                                //   Log.e("11111 Traning_Id "," "+((String) Cache.getData(CatchValue.ID,getContext())));
+                                dialog.dismiss();
 
-                          new RegisterTask().execute(Traning_Id, ((String) Cache.getData(CatchValue.ID,getContext())),""+3);
-                      } else {
-                          //  ShowNoInternetDialog();
-                      }
-                  }
-              }
-          });
+                                new RegisterTask().execute(Traning_Id, ((String) Cache.getData(CatchValue.ID, getContext())), "" + 3);
+                            } else {
+                                //  ShowNoInternetDialog();
+                            }
+                        }
+                    }
+                });
                 cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -384,6 +387,20 @@ else
                     }
                 });
                 dialog.show();
+            }
+            else
+                {
+                   // showToast("Unregister");
+                    isInternetPresent = cd.isConnectionAvailable();
+                    if (isInternetPresent) {
+                        //   showToast("success");
+                        //   Log.e("11111 Traning_Id "," "+((String) Cache.getData(CatchValue.ID,getContext())));
+
+                        new UnRegisterTask().execute(Traning_Id, ((String) Cache.getData(CatchValue.ID, getContext())));
+                    } else {
+                        //  ShowNoInternetDialog();
+                    }
+                }
             }
         });
 
@@ -503,16 +520,90 @@ else
             msgImage.setImageResource(R.drawable.no_image);
         }
 
-        Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "Quicksand-Bold.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "hel_bold.ttf");
         msgBoardTitle.setTypeface(custom_font);
 
-        custom_font = Typeface.createFromAsset(getContext().getAssets(), "Quicksand-Regular.ttf");
+        custom_font = Typeface.createFromAsset(getContext().getAssets(), "hel_medium.ttf");
         //   txtItemName.setTypeface(custom_font);
         date.setTypeface(custom_font);
         traineName.setTypeface(custom_font);
 
+
+        msgImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SubsamplingScaleImageView descImage;
+
+
+                final Dialog dialog = new Dialog(getContext());
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+                dialog.setContentView(R.layout.zoom_image);
+                Button cancel = (Button) dialog.findViewById(R.id.cancel);
+                descImage = (SubsamplingScaleImageView)dialog.findViewById(R.id.descImage);
+
+                if (!TextUtils.isEmpty(ppic)) {
+                    new DownLoadImageTaskZoom(descImage).execute(ppic);
+                } else {
+                    msgImage.setImageResource(R.drawable.no_image);
+                }
+
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
+
       //  description.setText(s);
         return v;
+    }
+
+    class DownLoadImageTaskZoom extends AsyncTask<String, Void, Bitmap> {
+        SubsamplingScaleImageView imageView;
+
+        public DownLoadImageTaskZoom(SubsamplingScaleImageView imageView) {
+            this.imageView = imageView;
+        }
+
+        /*
+            doInBackground(Params... params)
+                Override this method to perform a computation on a background thread.
+         */
+        protected Bitmap doInBackground(String... urls) {
+            String urlOfImage = urls[0];
+            Bitmap logo = null;
+
+            try {
+                if (!urlOfImage.contains("data:image/jpeg;base64")) {
+                    InputStream in = new java.net.URL(urlOfImage).openStream();
+                    logo = BitmapFactory.decodeStream(in);
+                } else {
+                    String actualBitmap = urlOfImage.substring(0, urlOfImage.indexOf(",") + 1);
+                    urlOfImage = urlOfImage.replace(actualBitmap, "");
+                    logo = bitmapConvert(urlOfImage);
+                }
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+            return logo;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            if(result!=null){
+                // imageView.setImageBitmap(result);
+                imageView.setImage(ImageSource.bitmap(result));
+            }
+            else {
+                // imageView.setImageResource(R.mipmap.pic);
+                imageView.setImage(ImageSource.resource(R.mipmap.pic));
+            }
+        }
     }
 
     class DownLoadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -651,6 +742,43 @@ else
         }
 
     }
+
+    private class UnRegisterTask extends AsyncTask<String,Void,Report> {
+
+        Report response = new Report();
+
+        @Override
+        protected void onPreExecute() {
+            showProgressDialog();
+        }
+
+        @Override
+        protected Report doInBackground(String... params) {
+            try {
+                JSONObject jObject = new JSONObject();
+                jObject.put("ModuleID", params[0]);
+                jObject.put("UserID", params[1]);
+              //  jObject.put("Module_Type", params[2]);
+
+                response = new ServiceClass().getJsonObjectResponsePost("http://ccg.bananaappscenter.com/api/User/Unregistred?ModuleID="+params[0]+"&UserID="+params[1]);
+            } catch (JSONException e) {
+                showToast("Server couldn't respond,Please try again");
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(Report response) {
+            dismissProgressDialog();
+            if (response!=null){
+                getUnRegisterResponse(response);
+            }
+            else {
+                showToast("Server couldn't respond,Please try again");
+            }
+        }
+
+    }
     public void showToast(String txt) {
         Toast toast = Toast.makeText(getContext(), txt, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 0, 0);
@@ -682,6 +810,42 @@ else
           //  Log.e("1452 resultJsonObject "," "+resultJsonObject);
             if(resultJsonObject!=null) {
          //       Log.e("Response ", " " + resultJsonObject.getString("Message"));
+                if (resultJsonObject.getString("StatusCode").equalsIgnoreCase("200")) {
+                    //showToast(resultJsonObject.getString("Message"));
+                    showToast(resultJsonObject.getString("Message"));
+                    Cache.putData(CatchValue.BackArrowRecall, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                    /*Intent intent = new Intent(getContext(), Home.class);
+                    Cache.putData(CatchValue.Operation, getContext(), "TrainingRegister", Cache.CACHE_LOCATION_DISK);
+                    startActivity(intent);*/
+                    FragmentTransaction transaction2 = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction2.replace(R.id.content, new TrainingBoard());
+                    transaction2.commit();
+
+                }
+            }
+            else {
+
+
+                showToast("Registration Failed please try again");
+
+            }
+        } catch (JSONException ex) {
+
+            showToast("Registration Failed please try again");
+        }
+
+    }
+
+
+    private void getUnRegisterResponse(Report response) {
+
+        try {
+           //  Log.e("1452 Response "," "+response);
+
+            resultJsonObject = response.getJsonObject();
+        //      Log.e("1452 resultJsonObject "," "+resultJsonObject);
+            if(resultJsonObject!=null) {
+                //       Log.e("Response ", " " + resultJsonObject.getString("Message"));
                 if (resultJsonObject.getString("StatusCode").equalsIgnoreCase("200")) {
                     //showToast(resultJsonObject.getString("Message"));
                     showToast(resultJsonObject.getString("Message"));

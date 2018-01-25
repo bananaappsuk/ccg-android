@@ -68,10 +68,11 @@ public class FragmentB extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    TextView profile,email,phone,Submit,cancel,homeDesc;
+    TextView profile,Submit,cancel,homeDesc,LastName,Username;
+
     LinearLayout beforeChangePwdLoutout,changePwdLoutout,editLayout;
     TextView changePassword;
-    EditText curPwd,newPwd,cnfPwd,name,titleType;
+    EditText curPwd,newPwd,cnfPwd,name,titleType,email,phone;
     ProgressDialog progressDialog;
     ImageView profileImg,show,showNew,showConfirm;
     Boolean isInternetPresent = false;
@@ -128,8 +129,11 @@ public class FragmentB extends Fragment {
         profile = (TextView)v.findViewById(R.id.profile);
         name = (EditText) v.findViewById(R.id.name);
         titleType = (EditText) v.findViewById(R.id.titleType);
-        email = (TextView)v.findViewById(R.id.email);
-        phone = (TextView)v.findViewById(R.id.phone);
+        email = (EditText) v.findViewById(R.id.email);
+        phone = (EditText) v.findViewById(R.id.phone);
+        LastName = (TextView)v.findViewById(R.id.LastName);
+        Username = (TextView)v.findViewById(R.id.Username);
+
         beforeChangePwdLoutout = (LinearLayout)v.findViewById(R.id.beforeChangePwdLoutout);
         changePwdLoutout = (LinearLayout)v.findViewById(R.id.changePwdLoutout);
         Submit = (TextView) v.findViewById(R.id.Submit);
@@ -205,8 +209,10 @@ public class FragmentB extends Fragment {
 
         name.setEnabled(false);
         titleType.setEnabled(false);
+        phone.setEnabled(false);
+        email.setEnabled(false);
         String pImag = ((String) Cache.getData(CatchValue.User_Pic,getContext()));
-       // Log.e("pimg","  "+pImag.length());
+        // Log.e("pimg ","  "+pImag);
         if(pImag!=null && pImag.length()!=4) {
             byte[] decodedString = Base64.decode(pImag, Base64.DEFAULT);
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
@@ -257,6 +263,19 @@ public class FragmentB extends Fragment {
 
         askForPermission(Manifest.permission.CAMERA, CAMERA);
         name.setText(((String) Cache.getData(CatchValue.Name,getContext())));
+        String lname = ((String) Cache.getData(CatchValue.LastName,getContext()));
+        if(lname.equalsIgnoreCase("null"))
+            LastName.setVisibility(View.GONE);
+        else
+           LastName.setText(((String) Cache.getData(CatchValue.LastName,getContext())));
+
+        lname = ((String) Cache.getData(CatchValue.Username,getContext()));
+        if(lname.equalsIgnoreCase("null"))
+            Username.setVisibility(View.GONE);
+        else
+            Username.setText(((String) Cache.getData(CatchValue.Username,getContext())));
+
+     //   Username.setText(((String) Cache.getData(CatchValue.Username,getContext())));
         titleType.setText(((String) Cache.getData(CatchValue.Title,getContext())));
         email.setText(((String) Cache.getData(CatchValue.Email,getContext())));
         phone.setText(((String) Cache.getData(CatchValue.Mobile,getContext())));
@@ -266,10 +285,12 @@ public class FragmentB extends Fragment {
         profile.setTypeface(custom_font);
         name.setTypeface(custom_font);
 
-        custom_font = Typeface.createFromAsset(getContext().getAssets(), "Quicksand-Regular.ttf");
+        custom_font = Typeface.createFromAsset(getContext().getAssets(), "hel_medium.ttf");
         titleType.setTypeface(custom_font);
         email.setTypeface(custom_font);
         phone.setTypeface(custom_font);
+
+        final String cpwd = ((String) Cache.getData(CatchValue.password,getContext()));
 
         cd = new ConnectionDetector(getContext());
         isInternetPresent = cd.isConnectionAvailable();
@@ -318,6 +339,12 @@ public class FragmentB extends Fragment {
                     cnfPwd.setText("");
                 }
                 else
+                    if(!cpwd.equals(curPwd.getText().toString().trim()))
+                {
+                    Toast.makeText(getContext(),"Current password is worng",Toast.LENGTH_SHORT).show();
+                    curPwd.setText("");
+                }
+                else
                 {
                     isInternetPresent = cd.isConnectionAvailable();
                     if (isInternetPresent) {
@@ -335,21 +362,23 @@ public class FragmentB extends Fragment {
             public void onClick(View v) {
                 if(homeDesc.getText().toString().equals("Edit profile")){
                     homeDesc.setText("Save");
-                    name.setEnabled(true);
-                    titleType.setEnabled(true);
+                    name.setEnabled(false);
+                    titleType.setEnabled(false);
+                    email.setEnabled(true);
+                    phone.setEnabled(true);
                 }
                 else
                 {
-                    if(TextUtils.isEmpty(name.getText().toString().trim()))
+                    if(TextUtils.isEmpty(email.getText().toString().trim()))
                     {
-                        name.setError("Please enter Name");
-                        name.requestFocus();
+                        email.setError("Please enter Email");
+                        email.requestFocus();
                     }
                     else
-                    if(TextUtils.isEmpty(titleType.getText().toString().trim()))
+                    if(TextUtils.isEmpty(phone.getText().toString().trim()))
                     {
-                        titleType.setError("Please enter Title");
-                        titleType.requestFocus();
+                        phone.setError("Please enter Phone");
+                        phone.requestFocus();
                     }
                     else {
                         homeDesc.setText("Edit profile");
@@ -358,9 +387,9 @@ public class FragmentB extends Fragment {
 
                         isInternetPresent = cd.isConnectionAvailable();
                         if (isInternetPresent) {
-                            Cache.putData(CatchValue.Name, getContext(), name.getText().toString().trim(), Cache.CACHE_LOCATION_DISK);
-                            Cache.putData(CatchValue.Title, getContext(), titleType.getText().toString().trim(), Cache.CACHE_LOCATION_DISK);
-                            new ProfileUpdate().execute(((String) Cache.getData(CatchValue.ID,getContext())),name.getText().toString().trim(), titleType.getText().toString().trim(),((String) Cache.getData(CatchValue.User_Pic,getContext())));
+                            Cache.putData(CatchValue.Email, getContext(), email.getText().toString().trim(), Cache.CACHE_LOCATION_DISK);
+                            Cache.putData(CatchValue.Mobile, getContext(), phone.getText().toString().trim(), Cache.CACHE_LOCATION_DISK);
+                            new ProfileUpdate().execute(((String) Cache.getData(CatchValue.ID,getContext())),email.getText().toString().trim(), phone.getText().toString().trim(),((String) Cache.getData(CatchValue.User_Pic,getContext())));
                         } else {
                             ShowNoInternetDialog2();
                         }
@@ -498,18 +527,16 @@ public class FragmentB extends Fragment {
                  //   JSONObject resultJson=resultJsonObject.getJSONObject("Msg");
                     //if(resultJson.length()>0&& resultJson!=null){
                         if (resultJsonObject.getString("StatusCode").equalsIgnoreCase("200")) {
-
                           //  responseMessage = resultJson.getString("Message");
-
                             Toast.makeText(getContext(), resultJsonObject.getString("Message"),Toast.LENGTH_SHORT).show();
                             // showToast(resultJsonObject.getString("Email"));
-
                             Cache.putData(CatchValue.Email, getContext(), "", Cache.CACHE_LOCATION_DISK);
                             Cache.putData(CatchValue.Mobile, getContext(), "", Cache.CACHE_LOCATION_DISK);
                             Cache.putData(CatchValue.Name, getContext(), "", Cache.CACHE_LOCATION_DISK);
                             Cache.putData(CatchValue.Title, getContext(),"", Cache.CACHE_LOCATION_DISK);
                             Cache.putData(CatchValue.User_Pic, getContext(), "", Cache.CACHE_LOCATION_DISK);
                             Cache.putData(CatchValue.ID, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                            Cache.putData(CatchValue.password, getContext(), "", Cache.CACHE_LOCATION_DISK);
 
                             //  Log.e("12345  "," "+ (String) Cache.getData(CatchValue.USER_NAME,Login.this));
 
@@ -623,8 +650,8 @@ public class FragmentB extends Fragment {
             try {
                 JSONObject jObject = new JSONObject();
                 jObject.put("ID", params[0]);
-                jObject.put("Name", params[1]);
-                jObject.put("Title", params[2]);
+                jObject.put("Email", params[1]);
+                jObject.put("Mobile", params[2]);
                 jObject.put("User_Pic", params[3]);
                // Log.e("1234ccg"," params[3] "+params[3]);
                 response = new ServiceClass().getJsonObjectResponse(jObject,"http://ccg.bananaappscenter.com/api/User/ProfileUpdate");

@@ -61,16 +61,16 @@ public class ForgotPwd extends BaseActivity  {
         agreeImg = (ImageView) findViewById(R.id.agreeImg);
         loginImg = (ImageView) findViewById(R.id.loginImg);
 
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "Quicksand-Regular.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "hel_medium.ttf");
         username.setTypeface(custom_font);
 
 
-        custom_font = Typeface.createFromAsset(getAssets(), "Quicksand-Bold.ttf");
+        custom_font = Typeface.createFromAsset(getAssets(), "hel_bold.ttf");
 
         login.setTypeface(custom_font);
         forgot.setTypeface(custom_font);
 
-        custom_font = Typeface.createFromAsset(getAssets(), "Quicksand-Bold.ttf");
+        custom_font = Typeface.createFromAsset(getAssets(), "hel_bold.ttf");
         welcome.setTypeface(custom_font);
 
 

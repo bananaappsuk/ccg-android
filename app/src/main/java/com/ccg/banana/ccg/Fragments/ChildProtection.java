@@ -83,7 +83,7 @@ public class ChildProtection extends Fragment {
     }
 
     private void init() {
-        Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "Quicksand-Regular.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "hel_medium.ttf");
         msgBoardTxt.setTypeface(custom_font);
     }
 

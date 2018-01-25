@@ -1,10 +1,10 @@
 package com.ccg.banana.ccg.Fragments;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,6 +23,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,14 +35,14 @@ import android.widget.VideoView;
 
 import com.ccg.banana.ccg.Activity.Home;
 import com.ccg.banana.ccg.Adapter.CommentMessageAdapter;
-import com.ccg.banana.ccg.Adapter.MessageBoardAdapter;
-import com.ccg.banana.ccg.Login;
 import com.ccg.banana.ccg.R;
 import com.ccg.banana.ccg.ServiceClass.ConnectionDetector;
 import com.ccg.banana.ccg.ServiceClass.Report;
 import com.ccg.banana.ccg.ServiceClass.ServiceClass;
 import com.ccg.banana.ccg.session.Cache;
 import com.ccg.banana.ccg.session.CatchValue;
+import com.davemorrissey.labs.subscaleview.ImageSource;
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.facebook.FacebookSdk;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
@@ -373,6 +374,36 @@ public class DisplayMessageBoard extends Fragment {
         });
 
         description.setText(s);
+
+        msgImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SubsamplingScaleImageView descImage;
+
+
+                final Dialog dialog = new Dialog(getContext());
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+                dialog.setContentView(R.layout.zoom_image);
+                Button cancel = (Button) dialog.findViewById(R.id.cancel);
+                descImage = (SubsamplingScaleImageView)dialog.findViewById(R.id.descImage);
+
+                if (!TextUtils.isEmpty(ppic)) {
+                    new DownLoadImageTaskZoom(descImage).execute(ppic);
+                } else {
+                    msgImage.setImageResource(R.drawable.no_image);
+                }
+
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
         return v;
     }
 
@@ -575,6 +606,49 @@ public class DisplayMessageBoard extends Fragment {
         }
     }
 
+
+    class DownLoadImageTaskZoom extends AsyncTask<String, Void, Bitmap> {
+        SubsamplingScaleImageView imageView;
+
+        public DownLoadImageTaskZoom(SubsamplingScaleImageView imageView) {
+            this.imageView = imageView;
+        }
+
+        /*
+            doInBackground(Params... params)
+                Override this method to perform a computation on a background thread.
+         */
+        protected Bitmap doInBackground(String... urls) {
+            String urlOfImage = urls[0];
+            Bitmap logo = null;
+
+            try {
+                if (!urlOfImage.contains("data:image/jpeg;base64")) {
+                    InputStream in = new java.net.URL(urlOfImage).openStream();
+                    logo = BitmapFactory.decodeStream(in);
+                } else {
+                    String actualBitmap = urlOfImage.substring(0, urlOfImage.indexOf(",") + 1);
+                    urlOfImage = urlOfImage.replace(actualBitmap, "");
+                    logo = bitmapConvert(urlOfImage);
+                }
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+            return logo;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            if(result!=null){
+               // imageView.setImageBitmap(result);
+                imageView.setImage(ImageSource.bitmap(result));
+            }
+            else {
+               // imageView.setImageResource(R.mipmap.pic);
+                imageView.setImage(ImageSource.resource(R.mipmap.pic));
+            }
+        }
+    }
     private Bitmap bitmapConvert(String Image) {
         byte[] decodedString = Base64.decode(Image, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);

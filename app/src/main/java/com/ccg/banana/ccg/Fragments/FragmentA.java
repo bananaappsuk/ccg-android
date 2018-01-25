@@ -132,11 +132,11 @@ public class FragmentA extends Fragment {
         childProtection = (Button) v.findViewById(R.id.childProtection);
         Cache.putData(CatchValue.onBackPressed, getContext(), "backHome", Cache.CACHE_LOCATION_DISK);
         name.setText("Hi "+((String) Cache.getData(CatchValue.Name,getContext())));
-        Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "Quicksand-Bold.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "hel_bold.ttf");
         name.setTypeface(custom_font);
         myBooking.setTypeface(custom_font);
         trainingBoardLists = new ArrayList<>();
-        custom_font = Typeface.createFromAsset(getContext().getAssets(), "Quicksand-Regular.ttf");
+        custom_font = Typeface.createFromAsset(getContext().getAssets(), "hel_medium.ttf");
         homeDesc.setTypeface(custom_font);
         msgBoardTxt.setTypeface(custom_font);
         msgTrainingTxt.setTypeface(custom_font);

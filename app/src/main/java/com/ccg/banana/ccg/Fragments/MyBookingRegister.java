@@ -251,10 +251,10 @@ for(int k=0;k<=obj.getTrainingPhotoLists().size();k++)
 
 
 
-        Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "Quicksand-Bold.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "hel_bold.ttf");
         msgBoardTitle.setTypeface(custom_font);
 
-        custom_font = Typeface.createFromAsset(getContext().getAssets(), "Quicksand-Regular.ttf");
+        custom_font = Typeface.createFromAsset(getContext().getAssets(), "hel_medium.ttf");
         //   txtItemName.setTypeface(custom_font);
         date.setTypeface(custom_font);
         traineName.setTypeface(custom_font);
@@ -449,10 +449,24 @@ for(int k=0;k<=obj.getTrainingPhotoLists().size();k++)
                                 responseMessage = resultJson.getString("Message");
                                 msgBoardTitle.setText(resultJsonObject.getString("Traning_Title"));
                                 date.setText(resultJsonObject.getString("Traning_StartDate_Format")+" "+resultJsonObject.getString("Traning_Day"));
-                                traineName.setText(resultJsonObject.getString("Traning_City")+" "+resultJsonObject.getString("Traning_StartTime_Format"));
+
+                                String ecity = resultJsonObject.getString("Traning_City");
+                                if(ecity.equalsIgnoreCase("null"))
+                                    ecity="";
+                                traineName.setText(ecity+" "+resultJsonObject.getString("Traning_StartTime_Format"));
+
+                                //traineName.setText(resultJsonObject.getString("Traning_City")+" "+resultJsonObject.getString("Traning_StartTime_Format"));
                                 traineName2.setText(resultJsonObject.getString("Traning_ContactPersonname"));
                                 contact.setText(resultJsonObject.getString("Traning_ContactPersonnumber"));
+
+
+                                //addressText.setText(resultJsonObject.getString("Traning_Address1")+ "\n"+resultJsonObject.getString("Traning_Address2"));
+
+                                if(!resultJsonObject.getString("Traning_Address1").equalsIgnoreCase("null") || !resultJsonObject.getString("Traning_Address2").equalsIgnoreCase("null"))
                                 addressText.setText(resultJsonObject.getString("Traning_Address1")+ "\n"+resultJsonObject.getString("Traning_Address2"));
+                                else
+                                    addressText.setText("");
+
                                 descriptionText.setText(resultJsonObject.getString("Traning_Description"));
 
                                 ppic = resultJsonObject.getString("Traning_Image");
@@ -468,10 +482,23 @@ for(int k=0;k<=obj.getTrainingPhotoLists().size();k++)
                                 responseMessage = resultJson.getString("Message");
                                 msgBoardTitle.setText(resultJsonObject.getString("Job_Title"));
                                 date.setText(resultJsonObject.getString("Job_StartDate_Format")+" "+resultJsonObject.getString("Job_Day"));
-                             //   traineName.setText(resultJsonObject.getString("Job_City")+" "+resultJsonObject.getString("Job_StartTime_Format"));
+
+                                String ecity = resultJsonObject.getString("Job_City");
+                                if(ecity.equalsIgnoreCase("null"))
+                                    ecity="";
+                                traineName.setText(ecity);
+
+                              //  traineName.setText(resultJsonObject.getString("Job_City"));
                                 traineName2.setText(resultJsonObject.getString("Job_ContactPersonname"));
                                 contact.setText(resultJsonObject.getString("Job_ContactPersonnumber"));
-                                addressText.setText(resultJsonObject.getString("Job_Address1")+ "\n"+resultJsonObject.getString("Job_Address2"));
+
+                              //  addressText.setText(resultJsonObject.getString("Job_Address1")+ "\n"+resultJsonObject.getString("Job_Address2"));
+
+                                if(!resultJsonObject.getString("Job_Address1").equalsIgnoreCase("null") || !resultJsonObject.getString("Job_Address2").equalsIgnoreCase("null"))
+                                    addressText.setText(resultJsonObject.getString("Job_Address1")+ "\n"+resultJsonObject.getString("Job_Address2"));
+                                else
+                                    addressText.setText("");
+
                                 descriptionText.setText(resultJsonObject.getString("Job_Description"));
 
                                 ppic = resultJsonObject.getString("Job_Image");
@@ -486,10 +513,28 @@ for(int k=0;k<=obj.getTrainingPhotoLists().size();k++)
                                 responseMessage = resultJson.getString("Message");
                                 msgBoardTitle.setText(resultJsonObject.getString("Event_Title"));
                                 date.setText(resultJsonObject.getString("Event_StartDate_Format")+" "+resultJsonObject.getString("Event_Day"));
-                                traineName.setText(resultJsonObject.getString("Event_City")+" "+resultJsonObject.getString("Event_StartTime_Format"));
+                                String ecity = resultJsonObject.getString("Event_City");
+                                if(ecity.equalsIgnoreCase("null"))
+                                    ecity="";
+                                traineName.setText(ecity+" "+resultJsonObject.getString("Event_StartTime_Format"));
                                 traineName2.setText(resultJsonObject.getString("Event_ContactPersonname"));
                                 contact.setText(resultJsonObject.getString("Event_ContactPersonnumber"));
+
+                               // addressText.setText(resultJsonObject.getString("Event_Address1")+ "\n"+resultJsonObject.getString("Event_Address2"));
+
+                               /* Log.e("Event_Address2 "," "+resultJsonObject.getString("Event_Address1"));
+                                Log.e("Event_Address2 "," "+resultJsonObject.getString("Event_Address1").length());
+                                Log.e("Event_Address2 "," "+resultJsonObject.getString("Event_Address2"));
+                                Log.e("Event_Address2 "," "+resultJsonObject.getString("Event_Address2").length());*/
+
+
+                                if(!resultJsonObject.getString("Event_Address1").equalsIgnoreCase("null") || !resultJsonObject.getString("Event_Address2").equalsIgnoreCase("null"))
                                 addressText.setText(resultJsonObject.getString("Event_Address1")+ "\n"+resultJsonObject.getString("Event_Address2"));
+                                else
+                                    addressText.setText("");
+                              //  descriptionText.setText(resultJsonObject.getString("Traning_Description"));
+
+
                                 descriptionText.setText(resultJsonObject.getString("Event_Description"));
 
                                 ppic = resultJsonObject.getString("Event_Image");

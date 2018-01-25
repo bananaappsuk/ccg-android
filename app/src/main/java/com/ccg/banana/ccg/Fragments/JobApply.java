@@ -45,6 +45,8 @@ import com.ccg.banana.ccg.ServiceClass.Report;
 import com.ccg.banana.ccg.ServiceClass.ServiceClass;
 import com.ccg.banana.ccg.session.Cache;
 import com.ccg.banana.ccg.session.CatchValue;
+import com.davemorrissey.labs.subscaleview.ImageSource;
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.facebook.FacebookSdk;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
@@ -231,20 +233,26 @@ for(int k=0;k<obj.getTrainingPhotoLists().size();k++)
 }
 if(Register_Status.equalsIgnoreCase("1"))
 {
-    register_button.setVisibility(View.GONE);
+    /*register_button.setVisibility(View.GONE);
     reg_success.setVisibility(View.VISIBLE);
-    login.setVisibility(View.GONE);
+    login.setVisibility(View.GONE);*/
+    login.setText("Cancel");
 }
 else
 {
-    register_button.setVisibility(View.VISIBLE);
+   /* register_button.setVisibility(View.VISIBLE);
     reg_success.setVisibility(View.GONE);
-    login.setVisibility(View.VISIBLE);
+    login.setVisibility(View.VISIBLE);*/
+
+    login.setText("Register");
 }
 
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (login.getText().toString().trim().equalsIgnoreCase("Register")) {
+
+
                 ImageView descImage;
                 Button reg;
                 TextView sorryText,price,Title;
@@ -297,6 +305,21 @@ else
                     }
                 });
                 dialog.show();
+
+                }
+                else
+                {
+                    // showToast("Unregister");
+                    isInternetPresent = cd.isConnectionAvailable();
+                    if (isInternetPresent) {
+                        //   showToast("success");
+                        //   Log.e("11111 Traning_Id "," "+((String) Cache.getData(CatchValue.ID,getContext())));
+
+                        new UnRegisterTask().execute(Traning_Id, ((String) Cache.getData(CatchValue.ID, getContext())));
+                    } else {
+                        //  ShowNoInternetDialog();
+                    }
+                }
             }
         });
 
@@ -388,10 +411,10 @@ else
             msgImage.setImageResource(R.drawable.no_image);
         }
 
-        Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "Quicksand-Bold.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "hel_bold.ttf");
         msgBoardTitle.setTypeface(custom_font);
 
-        custom_font = Typeface.createFromAsset(getContext().getAssets(), "Quicksand-Regular.ttf");
+        custom_font = Typeface.createFromAsset(getContext().getAssets(), "hel_medium.ttf");
         //   txtItemName.setTypeface(custom_font);
         date.setTypeface(custom_font);
         traineName.setTypeface(custom_font);
@@ -410,10 +433,154 @@ else
             }
         });
 
+        msgImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SubsamplingScaleImageView descImage;
+
+
+                final Dialog dialog = new Dialog(getContext());
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+                dialog.setContentView(R.layout.zoom_image);
+                Button cancel = (Button) dialog.findViewById(R.id.cancel);
+                descImage = (SubsamplingScaleImageView)dialog.findViewById(R.id.descImage);
+
+                if (!TextUtils.isEmpty(ppic)) {
+                    new DownLoadImageTaskZoom(descImage).execute(ppic);
+                } else {
+                    msgImage.setImageResource(R.drawable.no_image);
+                }
+
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
+
       //  description.setText(s);
         return v;
     }
 
+    class DownLoadImageTaskZoom extends AsyncTask<String, Void, Bitmap> {
+        SubsamplingScaleImageView imageView;
+
+        public DownLoadImageTaskZoom(SubsamplingScaleImageView imageView) {
+            this.imageView = imageView;
+        }
+
+        /*
+            doInBackground(Params... params)
+                Override this method to perform a computation on a background thread.
+         */
+        protected Bitmap doInBackground(String... urls) {
+            String urlOfImage = urls[0];
+            Bitmap logo = null;
+
+            try {
+                if (!urlOfImage.contains("data:image/jpeg;base64")) {
+                    InputStream in = new java.net.URL(urlOfImage).openStream();
+                    logo = BitmapFactory.decodeStream(in);
+                } else {
+                    String actualBitmap = urlOfImage.substring(0, urlOfImage.indexOf(",") + 1);
+                    urlOfImage = urlOfImage.replace(actualBitmap, "");
+                    logo = bitmapConvert(urlOfImage);
+                }
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+            return logo;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            if(result!=null){
+                // imageView.setImageBitmap(result);
+                imageView.setImage(ImageSource.bitmap(result));
+            }
+            else {
+                // imageView.setImageResource(R.mipmap.pic);
+                imageView.setImage(ImageSource.resource(R.mipmap.pic));
+            }
+        }
+    }
+
+    private class UnRegisterTask extends AsyncTask<String,Void,Report> {
+
+        Report response = new Report();
+
+        @Override
+        protected void onPreExecute() {
+            showProgressDialog();
+        }
+
+        @Override
+        protected Report doInBackground(String... params) {
+            try {
+                JSONObject jObject = new JSONObject();
+                jObject.put("ModuleID", params[0]);
+                jObject.put("UserID", params[1]);
+                //  jObject.put("Module_Type", params[2]);
+
+                response = new ServiceClass().getJsonObjectResponsePost("http://ccg.bananaappscenter.com/api/User/Unregistred?ModuleID="+params[0]+"&UserID="+params[1]);
+            } catch (JSONException e) {
+                showToast("Server couldn't respond,Please try again");
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(Report response) {
+            dismissProgressDialog();
+            if (response!=null){
+                getUnRegisterResponse(response);
+            }
+            else {
+                showToast("Server couldn't respond,Please try again");
+            }
+        }
+
+    }
+
+    private void getUnRegisterResponse(Report response) {
+
+        try {
+            //  Log.e("1452 Response "," "+response);
+
+            resultJsonObject = response.getJsonObject();
+            //      Log.e("1452 resultJsonObject "," "+resultJsonObject);
+            if(resultJsonObject!=null) {
+                //       Log.e("Response ", " " + resultJsonObject.getString("Message"));
+                if (resultJsonObject.getString("StatusCode").equalsIgnoreCase("200")) {
+                    //showToast(resultJsonObject.getString("Message"));
+                    showToast(resultJsonObject.getString("Message"));
+                    Cache.putData(CatchValue.BackArrowRecall, getContext(), "", Cache.CACHE_LOCATION_DISK);
+                    /*Intent intent = new Intent(getContext(), Home.class);
+                    Cache.putData(CatchValue.Operation, getContext(), "TrainingRegister", Cache.CACHE_LOCATION_DISK);
+                    startActivity(intent);*/
+                    FragmentTransaction transaction2 = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction2.replace(R.id.content, new JobsBoard());
+                    transaction2.commit();
+
+                }
+            }
+            else {
+
+
+                showToast("Registration Failed please try again");
+
+            }
+        } catch (JSONException ex) {
+
+            showToast("Registration Failed please try again");
+        }
+
+    }
     class DownLoadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView imageView;
 
@@ -531,7 +698,7 @@ else
                 jObject.put("UserID", params[1]);
                 jObject.put("Module_Type", params[2]);
              //   Log.e("1141 Response "," "+params[0] +"   "+ params[1]+"  "+params[2]);
-                response = new ServiceClass().getJsonObjectResponsePost("http://ccg.bananaappscenter.com/api/User/ModuleRegister?EventID="+params[0]+"&UserID="+params[1]+"&Module_Type="+params[2]);
+           //     response = new ServiceClass().getJsonObjectResponsePost("http://ccg.bananaappscenter.com/api/User/ModuleRegister?EventID="+params[0]+"&UserID="+params[1]+"&Module_Type="+params[2]);
                 response = new ServiceClass().getJsonObjectResponsePost("http://ccg.bananaappscenter.com/api/User/ModuleRegister?EventID="+params[0]+"&UserID="+params[1]+"&Module_Type="+params[2]);
             } catch (JSONException e) {
                 showToast("Server couldn't respond,Please try again");
@@ -576,11 +743,11 @@ else
     private void gerRegisterResponse(Report response) {
 
         try {
-          //  Log.e("1141 Response "," "+response);
+           // Log.e("1141 Response "," "+response);
 
             resultJsonObject = response.getJsonObject();
 
-          //  Log.e("1141 Response "," "+resultJsonObject);
+         //   Log.e("1141 Response "," "+resultJsonObject);
             if(resultJsonObject!=null) {
               //  Log.e("Response ", " " + resultJsonObject.getString("Message"));
                 if (resultJsonObject.getString("StatusCode").equalsIgnoreCase("200")) {

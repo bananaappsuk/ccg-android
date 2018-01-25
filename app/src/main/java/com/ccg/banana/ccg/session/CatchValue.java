@@ -12,7 +12,10 @@ public class CatchValue {
     public static final String Email = "Email";
     public static final String Mobile = "Mobile";
     public static final String Name = "Name";
+    public static final String LastName = "LastName";
+    public static final String Username = "Username";
     public static final String Title = "Title";
+
     public static final String User_Pic = "User_Pic";
 
     public static final String ID ="ID";
