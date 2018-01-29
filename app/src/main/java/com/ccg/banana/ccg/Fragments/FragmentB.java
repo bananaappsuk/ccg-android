@@ -68,11 +68,11 @@ public class FragmentB extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    TextView profile,Submit,cancel,homeDesc,LastName,Username;
+    TextView profile,Submit,cancel,homeDesc,LastName,Username,name;
 
     LinearLayout beforeChangePwdLoutout,changePwdLoutout,editLayout;
     TextView changePassword;
-    EditText curPwd,newPwd,cnfPwd,name,titleType,email,phone;
+    EditText curPwd,newPwd,cnfPwd,titleType,email,phone;
     ProgressDialog progressDialog;
     ImageView profileImg,show,showNew,showConfirm;
     Boolean isInternetPresent = false;
@@ -87,6 +87,9 @@ public class FragmentB extends Fragment {
     Boolean showFlag = false;
     Boolean showFlagNew = false;
     Boolean showFlagConfirm = false;
+    String EMAIL_REGEX = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    String EMAIL_REGEX_UK = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}+\\.[A-Za-z]{2,4}";
+
     public FragmentB() {
         // Required empty public constructor
     }
@@ -127,7 +130,7 @@ public class FragmentB extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_fragment_b, container, false);
         profile = (TextView)v.findViewById(R.id.profile);
-        name = (EditText) v.findViewById(R.id.name);
+        name = (TextView) v.findViewById(R.id.name);
         titleType = (EditText) v.findViewById(R.id.titleType);
         email = (EditText) v.findViewById(R.id.email);
         phone = (EditText) v.findViewById(R.id.phone);
@@ -262,18 +265,23 @@ public class FragmentB extends Fragment {
         });
 
         askForPermission(Manifest.permission.CAMERA, CAMERA);
-        name.setText(((String) Cache.getData(CatchValue.Name,getContext())));
+        String fn = (String) Cache.getData(CatchValue.Name,getContext());
+        if(!fn.equalsIgnoreCase("null"))
+        name.setText("First name : "+((String) Cache.getData(CatchValue.Name,getContext())));
+        else
+            name.setVisibility(View.GONE);
+
         String lname = ((String) Cache.getData(CatchValue.LastName,getContext()));
         if(lname.equalsIgnoreCase("null"))
             LastName.setVisibility(View.GONE);
         else
-           LastName.setText(((String) Cache.getData(CatchValue.LastName,getContext())));
+            LastName.setText("Last name : "+((String) Cache.getData(CatchValue.LastName,getContext())));
 
         lname = ((String) Cache.getData(CatchValue.Username,getContext()));
         if(lname.equalsIgnoreCase("null"))
             Username.setVisibility(View.GONE);
         else
-            Username.setText(((String) Cache.getData(CatchValue.Username,getContext())));
+            Username.setText("Username : "+((String) Cache.getData(CatchValue.Username,getContext())));
 
      //   Username.setText(((String) Cache.getData(CatchValue.Username,getContext())));
         titleType.setText(((String) Cache.getData(CatchValue.Title,getContext())));
@@ -283,7 +291,7 @@ public class FragmentB extends Fragment {
 
         Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "AbrilFatface-Regular.ttf");
         profile.setTypeface(custom_font);
-        name.setTypeface(custom_font);
+       // name.setTypeface(custom_font);
 
         custom_font = Typeface.createFromAsset(getContext().getAssets(), "hel_medium.ttf");
         titleType.setTypeface(custom_font);
@@ -375,12 +383,34 @@ public class FragmentB extends Fragment {
                         email.requestFocus();
                     }
                     else
+                    if(!IsValidEmail(email.getText().toString().trim()))
+                    {
+                      //  okMessage("Error","Please enter Valid Email ID");
+                        email.setError("Please enter Valid Email ID");
+                        email.requestFocus();
+                    }
+                    else
                     if(TextUtils.isEmpty(phone.getText().toString().trim()))
                     {
                         phone.setError("Please enter Phone");
                         phone.requestFocus();
                     }
+                    else
+                    if(phone.getText().toString().trim().length()!=11)
+                    {
+                        phone.setError("Please enter 11 digit Phone");
+                        phone.requestFocus();
+                    }
+
                     else {
+                        String s = phone.getText().toString().trim();
+                       // Log.e("phone "," "+s.substring(0,1));
+                        if(!s.substring(0,1).equalsIgnoreCase("0"))
+                        {
+                            phone.setError("Please enter first digit as 0 ");
+                            phone.requestFocus();
+                            return;
+                        }
                         homeDesc.setText("Edit profile");
                         name.setEnabled(false);
                         titleType.setEnabled(false);
@@ -401,6 +431,14 @@ public class FragmentB extends Fragment {
         });
         // Inflate the layout for this fragment
         return v;
+    }
+
+    public  boolean IsValidEmail(String msg)
+    {
+        if(msg.matches(EMAIL_REGEX) || msg.matches(EMAIL_REGEX_UK))
+            return true;
+        else
+            return false;
     }
 
     private void galleryIntent() {

@@ -45,6 +45,8 @@ import com.ccg.banana.ccg.ServiceClass.Report;
 import com.ccg.banana.ccg.ServiceClass.ServiceClass;
 import com.ccg.banana.ccg.session.Cache;
 import com.ccg.banana.ccg.session.CatchValue;
+import com.davemorrissey.labs.subscaleview.ImageSource;
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -259,8 +261,81 @@ for(int k=0;k<=obj.getTrainingPhotoLists().size();k++)
         date.setTypeface(custom_font);
         traineName.setTypeface(custom_font);
 
+        msgImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SubsamplingScaleImageView descImage;
+
+
+                final Dialog dialog = new Dialog(getContext());
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+                dialog.setContentView(R.layout.zoom_image);
+                Button cancel = (Button) dialog.findViewById(R.id.cancel);
+                descImage = (SubsamplingScaleImageView)dialog.findViewById(R.id.descImage);
+                // Log.e("ppic  "," "+ppic);
+                if (!TextUtils.isEmpty(ppic)) {
+                    new DownLoadImageTaskZoom(descImage).execute(ppic);
+                } else {
+                    msgImage.setImageResource(R.drawable.no_image);
+                }
+
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
+
       //  description.setText(s);
         return v;
+    }
+
+    class DownLoadImageTaskZoom extends AsyncTask<String, Void, Bitmap> {
+        SubsamplingScaleImageView imageView;
+
+        public DownLoadImageTaskZoom(SubsamplingScaleImageView imageView) {
+            this.imageView = imageView;
+        }
+
+        /*
+            doInBackground(Params... params)
+                Override this method to perform a computation on a background thread.
+         */
+        protected Bitmap doInBackground(String... urls) {
+            String urlOfImage = urls[0];
+            Bitmap logo = null;
+
+            try {
+                if (!urlOfImage.contains("data:image/jpeg;base64")) {
+                    InputStream in = new java.net.URL(urlOfImage).openStream();
+                    logo = BitmapFactory.decodeStream(in);
+                } else {
+                    String actualBitmap = urlOfImage.substring(0, urlOfImage.indexOf(",") + 1);
+                    urlOfImage = urlOfImage.replace(actualBitmap, "");
+                    logo = bitmapConvert(urlOfImage);
+                }
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+            return logo;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            if(result!=null){
+                // imageView.setImageBitmap(result);
+                imageView.setImage(ImageSource.bitmap(result));
+            }
+            else {
+                // imageView.setImageResource(R.mipmap.pic);
+                imageView.setImage(ImageSource.resource(R.mipmap.pic));
+            }
+        }
     }
 
     class DownLoadImageTask extends AsyncTask<String, Void, Bitmap> {
