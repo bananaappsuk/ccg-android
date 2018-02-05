@@ -204,6 +204,7 @@ String sid;
                 int m=0;
                 resultJsonObject = response.getJsonObject();
                 if(resultJsonObject.length()>0&&resultJsonObject!=null) {
+                    try {
                     JSONObject resultJson=resultJsonObject.getJSONObject("Msg");
                     if(resultJson.length()>0&& resultJson!=null){
                         if (resultJson.getString("StatusCode").equalsIgnoreCase("200")) {
@@ -324,7 +325,15 @@ String sid;
                             showToast(responseMessage);
                         }
                     }
-
+                }catch (Exception e)
+                {
+                    responseMessage = resultJsonObject.getString("Message");
+                    showToast(responseMessage);
+                    Cache.putData(CatchValue.MyBooking, getContext(), "MyBookingCall", Cache.CACHE_LOCATION_DISK);
+                    Intent intent = new Intent(getContext(), Home.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
                 }
                 else {
 
@@ -335,8 +344,8 @@ String sid;
 
             else {
 
-
-                showToast("Invalid credentials. ");
+                responseMessage = resultJsonObject.getString("Message");
+                showToast(responseMessage);
 
             }
         } catch (JSONException ex) {

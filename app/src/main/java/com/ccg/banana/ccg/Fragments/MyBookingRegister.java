@@ -227,9 +227,6 @@ for(int k=0;k<=obj.getTrainingPhotoLists().size();k++)
             ModuleString = "1";
           //  ModuleString = "Event_ID=1";
 
-
-
-
                   isInternetPresent = cd.isConnectionAvailable();
                   if (isInternetPresent) {
 
@@ -238,20 +235,11 @@ for(int k=0;k<=obj.getTrainingPhotoLists().size();k++)
                     //  ShowNoInternetDialog();
                   }
 
-
-
-
         d = sharedPrefs.getString("Message_Post_DateTime_Format", "");
         day = sharedPrefs.getString("Traning_Day", "");
 
-
-
         loc= sharedPrefs.getString("Trainee_Name", "");
         start_time= sharedPrefs.getString("Traning_StartTime_Format", "");
-
-
-
-
 
         Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "hel_bold.ttf");
         msgBoardTitle.setTypeface(custom_font);
@@ -265,7 +253,6 @@ for(int k=0;k<=obj.getTrainingPhotoLists().size();k++)
             @Override
             public void onClick(View v) {
                 SubsamplingScaleImageView descImage;
-
 
                 final Dialog dialog = new Dialog(getContext());
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

@@ -169,7 +169,7 @@ String sid;
             try {
                 ServiceClass utility = new ServiceClass();
                // response = utility.getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Events/GetTraningsbyUserID?UserID="+sid);
-                response = utility.getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Events/GetjobsbyUserID?UserID="+sid);
+                response = utility.getJsonObjectResponseTest("http://ccg.bananaappscenter.com/api/Events/GetjobsbyUserID?UserID="+sid);
             } catch (Exception e) {
                 showToast("Server couldn't respond,Please try again");
             }
@@ -200,102 +200,113 @@ String sid;
             editor.putString("AllJobsBoardLists", json2);
             editor.commit();
 
-            //resultJsonObject = response.getJsonObject();
-           // Log.e("Response "," "+resultJsonObject);
+           /* resultJsonObject = response.getJsonObject();
+            Log.e("Response "," "+resultJsonObject);*/
             if (response.getStatus().equalsIgnoreCase("true")) {
+              //  Log.e("Response 1 "," ");
                 resultJsonObject = response.getJsonObject();
                 if(resultJsonObject.length()>0&&resultJsonObject!=null) {
-                    JSONObject resultJson=resultJsonObject.getJSONObject("Msg");
-                    if(resultJson.length()>0&& resultJson!=null){
-                        if (resultJson.getString("StatusCode").equalsIgnoreCase("200")) {
-                            responseMessage = resultJson.getString("Message");
-                          //  Toast.makeText(getContext(),"  Message_Title "+responseMessage, Toast.LENGTH_SHORT).show();
-                            if(resultJsonObject.length()!=0 && !resultJsonObject.equals("[]")) {
-                                JSONArray resultJsonArray = resultJsonObject.getJSONArray("JobList");
-                                if (resultJsonArray.length() != 0 && !resultJsonArray.equals("[]")) {
-                                    for (int i = 0; i < resultJsonArray.length(); i++) {
+               //     Log.e("Response 2 "," ");
 
-                                      resultData = resultJsonArray.getJSONObject(i);
-                                   //     showToast("Job_Category_Name  "+resultData.getString("Job_Category_Name"));
-                                          Capacity = resultData.getString("Capacity");
-                                        Register_Status = resultData.getString("Register_Status");
-                                        Status = resultData.getString("Status");
-                                        Traning_Address1 = resultData.getString("Job_Address1");
-                                        Traning_Address2 = resultData.getString("Job_Address2");
-                                        Traning_Category_Id = resultData.getString("Job_Category_Id");
-                                        Traning_Category_Name = resultData.getString("Job_Category_Name");
-                                        Traning_City = resultData.getString("Job_City");
-                                        Traning_ContactPersonname = resultData.getString("Job_ContactPersonname");
-                                        Traning_ContactPersonnumber = resultData.getString("Job_ContactPersonnumber");
-                                        Traning_Day = resultData.getString("Job_Day");
-                                        Traning_Description = resultData.getString("Job_Description");
-                                        Traning_EndDate = resultData.getString("Job_EndDate");
-                                        Traning_EndDate_Foramt = resultData.getString("Job_EndDate_Format");
-                                        Traning_EndTime = "";
-                                        Traning_EndTime_Format = "";
-                                        Traning_Id = resultData.getString("Job_Id");
-                                        Traning_Image = resultData.getString("Job_Image");
-                                        Traning_Postcode = resultData.getString("Job_Postcode");
-                                        Traning_StartDate = resultData.getString("Job_StartDate");
-                                        Traning_StartDate_Format = resultData.getString("Job_StartDate_Format");
-                                        Traning_StartTime = "";
-                                        Traning_StartTime_Format = "";
-                                        Traning_Title = resultData.getString("Job_Title");
+                        try {
+
+                            JSONObject resultJson = resultJsonObject.getJSONObject("Msg");
+                            if (resultJson.length() > 0 && resultJson != null) {
+                             //   Log.e("Response 3 ", " ");
+                                if (resultJson.getString("StatusCode").equalsIgnoreCase("200")) {
+                               //     Log.e("Response 4 ", " ");
+                                    responseMessage = resultJson.getString("Message");
+                                    //  Toast.makeText(getContext(),"  Message_Title "+responseMessage, Toast.LENGTH_SHORT).show();
+                                    if (resultJsonObject.length() != 0 && !resultJsonObject.equals("[]")) {
+                                        JSONArray resultJsonArray = resultJsonObject.getJSONArray("JobList");
+                                        if (resultJsonArray.length() != 0 && !resultJsonArray.equals("[]")) {
+                                            for (int i = 0; i < resultJsonArray.length(); i++) {
+
+                                                resultData = resultJsonArray.getJSONObject(i);
+                                                //     showToast("Job_Category_Name  "+resultData.getString("Job_Category_Name"));
+                                                Capacity = resultData.getString("Capacity");
+                                                Register_Status = resultData.getString("Register_Status");
+                                                Status = resultData.getString("Status");
+                                                Traning_Address1 = resultData.getString("Job_Address1");
+                                                Traning_Address2 = resultData.getString("Job_Address2");
+                                                Traning_Category_Id = resultData.getString("Job_Category_Id");
+                                                Traning_Category_Name = resultData.getString("Job_Category_Name");
+                                                Traning_City = resultData.getString("Job_City");
+                                                Traning_ContactPersonname = resultData.getString("Job_ContactPersonname");
+                                                Traning_ContactPersonnumber = resultData.getString("Job_ContactPersonnumber");
+                                                Traning_Day = resultData.getString("Job_Day");
+                                                Traning_Description = resultData.getString("Job_Description");
+                                                Traning_EndDate = resultData.getString("Job_EndDate");
+                                                Traning_EndDate_Foramt = resultData.getString("Job_EndDate_Format");
+                                                Traning_EndTime = "";
+                                                Traning_EndTime_Format = "";
+                                                Traning_Id = resultData.getString("Job_Id");
+                                                Traning_Image = resultData.getString("Job_Image");
+                                                Traning_Postcode = resultData.getString("Job_Postcode");
+                                                Traning_StartDate = resultData.getString("Job_StartDate");
+                                                Traning_StartDate_Format = resultData.getString("Job_StartDate_Format");
+                                                Traning_StartTime = "";
+                                                Traning_StartTime_Format = "";
+                                                Traning_Title = resultData.getString("Job_Title");
 
 
-                                        //trainingPhotoLists.clear();
-                                        trainingPhotoLists = new ArrayList<>();
-                                        resultData = resultJsonArray.getJSONObject(i);
-                                        JSONArray resultJsonArray2 = resultData.getJSONArray("Job_Photos");
-                                        JobPhotoList t = null;
-                                       for (int i2 = 0; i2 < resultJsonArray2.length(); i2++) {
-                                            resultData2 = resultJsonArray2.getJSONObject(i2);
-                                            t = new JobPhotoList(resultData2.getString("ID"),resultData2.getString("Traning_Id"),resultData2.getString("Traning_Photo"));
-                                            trainingPhotoLists.add(t);
+                                                //trainingPhotoLists.clear();
+                                                trainingPhotoLists = new ArrayList<>();
+                                                resultData = resultJsonArray.getJSONObject(i);
+                                                JSONArray resultJsonArray2 = resultData.getJSONArray("Job_Photos");
+                                                JobPhotoList t = null;
+                                                for (int i2 = 0; i2 < resultJsonArray2.length(); i2++) {
+                                                    resultData2 = resultJsonArray2.getJSONObject(i2);
+                                                    t = new JobPhotoList(resultData2.getString("ID"), resultData2.getString("Traning_Id"), resultData2.getString("Traning_Photo"));
+                                                    trainingPhotoLists.add(t);
+                                                }
+
+
+                                                //TrainingBoardList d = new TrainingBoardList(Capacity,Register_Status,Status,Traning_Address1,Traning_Address2,Traning_Category_Id,Traning_Category_Name,Traning_City,Traning_ContactPersonname,Traning_ContactPersonnumber,Traning_Day,Traning_Description,Traning_EndDate,Traning_EndDate_Foramt,Traning_EndTime,Traning_EndTime_Format,Traning_Id,Traning_Image,Traning_Postcode,Traning_StartDate,Traning_StartDate_Format,Traning_StartTime,Traning_StartTime_Format,Traning_Title,trainingPhotoLists);
+                                                JobsBoardList d = new JobsBoardList(Capacity, Register_Status, Status, Traning_Address1, Traning_Address2, Traning_Category_Id, Traning_Category_Name, Traning_City, Traning_ContactPersonname, Traning_ContactPersonnumber, Traning_Day, Traning_Description, Traning_EndDate, Traning_EndDate_Foramt, Traning_EndTime, Traning_EndTime_Format, Traning_Id, Traning_Image, Traning_Postcode, Traning_StartDate, Traning_StartDate_Format, Traning_StartTime, Traning_StartTime_Format, Traning_Title, trainingPhotoLists);
+                                                trainingBoardLists.add(d);
+                                            }
                                         }
+                                        // showToast("Traning_Photo  "+trainingPhotoLists.get(0).getTraning_Photo());
+                                        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+                                        editor = sharedPrefs.edit();
+                                        gson = new Gson();
 
+                                        json2 = gson.toJson(trainingBoardLists);
+                                        editor.putString("AllJobsBoardLists", json2);
+                                        editor.commit();
 
-                                        //TrainingBoardList d = new TrainingBoardList(Capacity,Register_Status,Status,Traning_Address1,Traning_Address2,Traning_Category_Id,Traning_Category_Name,Traning_City,Traning_ContactPersonname,Traning_ContactPersonnumber,Traning_Day,Traning_Description,Traning_EndDate,Traning_EndDate_Foramt,Traning_EndTime,Traning_EndTime_Format,Traning_Id,Traning_Image,Traning_Postcode,Traning_StartDate,Traning_StartDate_Format,Traning_StartTime,Traning_StartTime_Format,Traning_Title,trainingPhotoLists);
-                                        JobsBoardList d = new JobsBoardList(Capacity,Register_Status,Status,Traning_Address1,Traning_Address2,Traning_Category_Id,Traning_Category_Name,Traning_City,Traning_ContactPersonname,Traning_ContactPersonnumber,Traning_Day,Traning_Description,Traning_EndDate,Traning_EndDate_Foramt,Traning_EndTime,Traning_EndTime_Format,Traning_Id,Traning_Image,Traning_Postcode,Traning_StartDate,Traning_StartDate_Format,Traning_StartTime,Traning_StartTime_Format,Traning_Title,trainingPhotoLists);
-                                        trainingBoardLists.add(d);
+                                        ShowData();
                                     }
+
+
+                                } else {
+                                    responseMessage = resultJson.getString("Message");
+                                    Toast.makeText(getContext(), responseMessage, Toast.LENGTH_SHORT).show();
+                                    return;
                                 }
-                                // showToast("Traning_Photo  "+trainingPhotoLists.get(0).getTraning_Photo());
-                                sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-                                editor = sharedPrefs.edit();
-                                gson = new Gson();
 
-                                json2 = gson.toJson(trainingBoardLists);
-                                editor.putString("AllJobsBoardLists", json2);
-                                editor.commit();
-
-                                ShowData();
+                            } else if (resultJson.getString("isSuccess").equalsIgnoreCase("false")) {
+                                if (resultJsonObject.getString("StatusCode").equalsIgnoreCase("400")) {
+                                    responseMessage = resultJsonObject.getString("Message");
+                                    showToast(responseMessage);
+                                } else if (resultJsonObject.getString("StatusCode").equalsIgnoreCase("401")) {
+                                    responseMessage = resultJsonObject.getString("Message");
+                                    showToast(responseMessage);
+                                } else if (resultJsonObject.getString("StatusCode").equalsIgnoreCase("405")) {
+                                    responseMessage = resultJsonObject.getString("Message");
+                                    showToast(responseMessage);
+                                }
                             }
-
-
-                        }
-                        else
+                        }catch (Exception e)
                         {
-                            responseMessage = resultJson.getString("Message");
-                            Toast.makeText(getContext(),responseMessage,Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-
-                    }
-                    else if(resultJson.getString("isSuccess").equalsIgnoreCase("false")){
-                        if (resultJsonObject.getString("StatusCode").equalsIgnoreCase("400")){
                             responseMessage = resultJsonObject.getString("Message");
                             showToast(responseMessage);
+                            Cache.putData(CatchValue.MyBooking, getContext(), "MyBookingCall", Cache.CACHE_LOCATION_DISK);
+                            Intent intent = new Intent(getContext(), Home.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
                         }
-                        else if (resultJsonObject.getString("StatusCode").equalsIgnoreCase("401")){
-                            responseMessage = resultJsonObject.getString("Message");
-                            showToast(responseMessage);
-                        }
-                        else if (resultJsonObject.getString("StatusCode").equalsIgnoreCase("405")){
-                            responseMessage = resultJsonObject.getString("Message");
-                            showToast(responseMessage);
-                        }
-                    }
 
                 }
                 else {
@@ -306,9 +317,10 @@ String sid;
             }
 
             else {
+                responseMessage = resultJsonObject.getString("Message");
+                showToast(responseMessage);
 
-
-                showToast("Invalid credentials. ");
+               // showToast("Invalid credentials. ");
 
             }
         } catch (JSONException ex) {
