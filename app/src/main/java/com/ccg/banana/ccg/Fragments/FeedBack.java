@@ -146,7 +146,7 @@ EditText message;
                 String url = urlString.replaceAll("\n","%20");
               /*  Log.e("1245  params[0] "," "+ params[0]);
                 Log.e("1245 "," "+ params[1]);*/
-                response = new ServiceClass().getJsonObjectResponsePost("http://ccg.bananaappscenter.com/api/User/FeedbackSubmit?UserID="+params[0]+"&FeedBack="+url);
+                response = new ServiceClass().getJsonObjectResponsePost("http://bananatech.co.uk/api/User/FeedbackSubmit?UserID="+params[0]+"&FeedBack="+url);
               //  response = new ServiceClass().getJsonObjectResponsePost("http://ccg.bananaappscenter.com/api/User/FeedbackUserID="+params[0]+"&FeedBack="+params[1]);
              //   response = new ServiceClass().getJsonObjectResponse(jObject,"http://ccg.bananaappscenter.com/api/User/Feedback?UserID=4&FeedBack=test");
             } catch (JSONException e) {

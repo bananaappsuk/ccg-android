@@ -380,7 +380,7 @@ public class EventCalender extends Fragment {
 //                utility = new Utility(SevaActivity.this);
               //  jsonObject1 = getCalendarDates("http://www.doctorsfriend.uk/AppGetDiaryView.ashx?HospitalCode=DFTEST&StudyID=DFTEST1&Token=BB4C6A75-2BE5-4504-80A0-1E069EF65ED7&UserPassword=selenite");
                // jsonObject1 = getCalendarDates("http://www.doctorsfriend.uk/AppGetDiaryView.ashx?HospitalCode="+ UIUtils.getHospitalCode(getContext())+"&StudyID="+UIUtils.getStudentId(getContext())+"&Token="+UIUtils.getToken(getContext())+"&UserPassword="+UIUtils.getPassword(getContext()));
-                jsonObject1 = getCalendarDates("http://ccg.bananaappscenter.com/api/Events/GeteventsbyUserID?UserID="+sid);
+                jsonObject1 = getCalendarDates("http://bananatech.co.uk/api/Events/GeteventsbyUserID?UserID="+sid);
                                               //http://ccg.bananaappscenter.com/api/Events/GeteventsbyUserID?UserID="+sid
 
             } catch (Exception e) {
@@ -723,7 +723,7 @@ public class EventCalender extends Fragment {
             try {
                 ServiceClass utility = new ServiceClass();
                 // response = utility.getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Events/GetTraningsbyUserID?UserID="+sid);
-                response = utility.getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Events/GetEventsbyDate?Date="+params[0]+"&UserID="+params[1]);
+                response = utility.getJsonObjectResponse("http://bananatech.co.uk/api/Events/GetEventsbyDate?Date="+params[0]+"&UserID="+params[1]);
             } catch (Exception e) {
                 showToast("Server couldn't respond,Please try again");
             }
@@ -886,7 +886,7 @@ public class EventCalender extends Fragment {
             try {
                 ServiceClass utility = new ServiceClass();
              // response = utility.getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Events/GetTraningsbyUserID?UserID="+sid);
-                response = utility.getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Events/GeteventsbyUserID?UserID="+sid);
+                response = utility.getJsonObjectResponse("http://bananatech.co.uk/api/Events/GeteventsbyUserID?UserID="+sid);
             } catch (Exception e) {
                 showToast("Server couldn't respond,Please try again");
             }

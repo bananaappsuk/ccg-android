@@ -521,7 +521,7 @@ public class FragmentB extends Fragment {
                 JSONObject jObject = new JSONObject();
                 jObject.put("ID", params[0]);
                 jObject.put("Password", params[1]);
-                response = new ServiceClass().getJsonObjectResponse(jObject,"http://ccg.bananaappscenter.com/api/User/ChangePassword");
+                response = new ServiceClass().getJsonObjectResponse(jObject,"http://bananatech.co.uk/api/User/ChangePassword");
             } catch (JSONException e) {
                 Toast.makeText(getContext(),"Server couldn't respond,Please try again",Toast.LENGTH_SHORT).show();
             }
@@ -692,7 +692,7 @@ public class FragmentB extends Fragment {
                 jObject.put("Mobile", params[2]);
                 jObject.put("User_Pic", params[3]);
                // Log.e("1234ccg"," params[3] "+params[3]);
-                response = new ServiceClass().getJsonObjectResponse(jObject,"http://ccg.bananaappscenter.com/api/User/ProfileUpdate");
+                response = new ServiceClass().getJsonObjectResponse(jObject,"http://bananatech.co.uk/api/User/ProfileUpdate");
             } catch (JSONException e) {
                 Toast.makeText(getContext(),"Server couldn't respond,Please try again",Toast.LENGTH_SHORT).show();
             }

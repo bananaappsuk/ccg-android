@@ -157,7 +157,7 @@ else {
             try {
                 ServiceClass utility = new ServiceClass();
                // response = utility.getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Message/GetMessages");
-                response = utility.getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Message/GetMessagesbyUserID?UserID="+params[0]);
+                response = utility.getJsonObjectResponse("http://bananatech.co.uk/api/Message/GetMessagesbyUserID?UserID="+params[0]);
             } catch (Exception e) {
                 showToast("Server couldn't respond,Please try again");
             }

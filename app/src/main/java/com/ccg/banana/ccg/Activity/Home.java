@@ -8,23 +8,14 @@ import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.support.v4.app.Fragment;
 
 import com.ccg.banana.ccg.Fragments.DisplayMessageBoard;
 import com.ccg.banana.ccg.Fragments.EventApply;
@@ -37,20 +28,14 @@ import com.ccg.banana.ccg.Fragments.JobsBoard;
 import com.ccg.banana.ccg.Fragments.MessageBoard;
 import com.ccg.banana.ccg.Fragments.More;
 import com.ccg.banana.ccg.Fragments.MyBookingRegister;
-import com.ccg.banana.ccg.Fragments.Notification;
 import com.ccg.banana.ccg.Fragments.SafeGuardNhs;
 import com.ccg.banana.ccg.Fragments.SafeGuardNhsAdult;
 import com.ccg.banana.ccg.Fragments.TrainingBoard;
 import com.ccg.banana.ccg.Fragments.TrainingRegister;
 import com.ccg.banana.ccg.Login;
 import com.ccg.banana.ccg.R;
-import com.ccg.banana.ccg.ServiceClass.ConnectionDetector;
 import com.ccg.banana.ccg.session.Cache;
 import com.ccg.banana.ccg.session.CatchValue;
-
-import org.json.JSONObject;
-
-import java.lang.reflect.Field;
 
 /**
  * Created by Banana on 11-Dec-17.
@@ -320,7 +305,7 @@ ImageView backArrow,drProfileImg;
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         BottomNavigationViewHelper.disableShiftMode(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-//backArrow.setVisibility(View.GONE);
+    //  backArrow.setVisibility(View.GONE);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content, new FragmentA());
         transaction.commit();
@@ -609,31 +594,21 @@ ImageView backArrow,drProfileImg;
 
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                 //   mTextMessage.setText(R.string.title_home);
-                   // fragment = new FragmentB();
                     Cache.putData(CatchValue.BackArrow, getApplicationContext(), "Hide", Cache.CACHE_LOCATION_DISK);
                     Cache.putData(CatchValue.MyBooking, getApplicationContext(), "MyBookingCall", Cache.CACHE_LOCATION_DISK);
                     Cache.putData(CatchValue.BackArrowRecall, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
                     BackArrowMethod();
-                   // backArrow.setVisibility(View.VISIBLE);
+
                     transaction.replace(R.id.content, new FragmentA());
                     transaction.commit();
                     return true;
                 case R.id.navigation_dashboard:
-                //    mTextMessage.setText(R.string.title_dashboard);
-              //      fragment = new FragmentB();
-                   // backArrow.setVisibility(View.VISIBLE);
                     Cache.putData(CatchValue.BackArrowRecall, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
                     transaction.replace(R.id.content, new FragmentB());
                     transaction.commit();
                     return true;
-      /*          case R.id.navigation_notifications:
-                 //   mTextMessage.setText(R.string.title_notifications);
-                    transaction.replace(R.id.content, new Notification());
-                    transaction.commit();
-                    return true;*/
+
                 case R.id.navigation_more:
-                //    mTextMessage.setText(R.string.title_more);
                     Cache.putData(CatchValue.BackArrowRecall, getApplicationContext(), "", Cache.CACHE_LOCATION_DISK);
                     transaction.replace(R.id.content, new More());
                     transaction.commit();
@@ -641,7 +616,6 @@ ImageView backArrow,drProfileImg;
                     return true;
             }
 
-         //   getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, "TAG").commit();
 
             return false;
         }

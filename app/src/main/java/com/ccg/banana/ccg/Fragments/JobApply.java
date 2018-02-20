@@ -527,7 +527,7 @@ else
                 jObject.put("UserID", params[1]);
                 //  jObject.put("Module_Type", params[2]);
 
-                response = new ServiceClass().getJsonObjectResponsePost("http://ccg.bananaappscenter.com/api/User/Unregistred?ModuleID="+params[0]+"&UserID="+params[1]);
+                response = new ServiceClass().getJsonObjectResponsePost("http://bananatech.co.uk/api/User/Unregistred?ModuleID="+params[0]+"&UserID="+params[1]);
             } catch (JSONException e) {
                 showToast("Server couldn't respond,Please try again");
             }
@@ -699,7 +699,7 @@ else
                 jObject.put("Module_Type", params[2]);
              //   Log.e("1141 Response "," "+params[0] +"   "+ params[1]+"  "+params[2]);
            //     response = new ServiceClass().getJsonObjectResponsePost("http://ccg.bananaappscenter.com/api/User/ModuleRegister?EventID="+params[0]+"&UserID="+params[1]+"&Module_Type="+params[2]);
-                response = new ServiceClass().getJsonObjectResponsePost("http://ccg.bananaappscenter.com/api/User/ModuleRegister?EventID="+params[0]+"&UserID="+params[1]+"&Module_Type="+params[2]);
+                response = new ServiceClass().getJsonObjectResponsePost("http://bananatech.co.uk/api/User/ModuleRegister?EventID="+params[0]+"&UserID="+params[1]+"&Module_Type="+params[2]);
             } catch (JSONException e) {
                 showToast("Server couldn't respond,Please try again");
             }

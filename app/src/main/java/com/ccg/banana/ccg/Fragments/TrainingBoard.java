@@ -167,7 +167,7 @@ String sid;
         protected Report doInBackground(String... params) {
             try {
                 ServiceClass utility = new ServiceClass();
-                response = utility.getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Events/GetTraningsbyUserID?UserID="+sid);
+                response = utility.getJsonObjectResponse("http://bananatech.co.uk/api/Events/GetTraningsbyUserID?UserID="+sid);
             } catch (Exception e) {
                 showToast("Server couldn't respond,Please try again");
             }

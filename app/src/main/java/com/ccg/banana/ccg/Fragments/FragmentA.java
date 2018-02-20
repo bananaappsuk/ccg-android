@@ -286,7 +286,7 @@ public class FragmentA extends Fragment {
             try {
                 JSONObject jObject = new JSONObject();
                 jObject.put("Username", params[0]);
-                response = new ServiceClass().getJsonObjectResponse("http://ccg.bananaappscenter.com/api/User/Bookings?UserID="+params[0]);
+                response = new ServiceClass().getJsonObjectResponse("http://bananatech.co.uk/api/User/Bookings?UserID="+params[0]);
             } catch (JSONException e) {
                 showToast("Server couldn't respond,Please try again");
             }

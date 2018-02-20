@@ -445,14 +445,14 @@ for(int k=0;k<=obj.getTrainingPhotoLists().size();k++)
                 Log.e("1234 EventID  "," "+params[1]);*/
                ModuleId = ((String) Cache.getData(CatchValue.ModuleId,getContext()));
                 if(ModuleType.equalsIgnoreCase("3"))
-                    response = new ServiceClass().getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Events/GetTraningbyUserID?UserID="+params[0]+"&Traning_ID="+ModuleId);
+                    response = new ServiceClass().getJsonObjectResponse("http://bananatech.co.uk/api/Events/GetTraningbyUserID?UserID="+params[0]+"&Traning_ID="+ModuleId);
                                                                       // http://ccg.bananaappscenter.com/api/Events/GetTraningbyUserID?UserID=4&Traning_ID=3
                 else
                     if(ModuleType.equalsIgnoreCase("2"))
-                    response = new ServiceClass().getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Events/GetJobbyUserID?UserID="+params[0]+"&Job_ID="+ModuleId);
+                    response = new ServiceClass().getJsonObjectResponse("http://bananatech.co.uk/api/Events/GetJobbyUserID?UserID="+params[0]+"&Job_ID="+ModuleId);
                     //  ModuleString = "Job_ID=2";
                 else
-                    response = new ServiceClass().getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Events/GetEventbyUserID?UserID="+params[0]+"&Event_ID="+ModuleId);
+                    response = new ServiceClass().getJsonObjectResponse("http://bananatech.co.uk/api/Events/GetEventbyUserID?UserID="+params[0]+"&Event_ID="+ModuleId);
 
 
             } catch (JSONException e) {

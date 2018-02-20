@@ -262,7 +262,7 @@ public class Login extends BaseActivity  {
                 JSONObject jObject = new JSONObject();
                 jObject.put("Username", params[0]);
                 jObject.put("Password", params[1]);
-                response = new ServiceClass().getJsonObjectResponseTest(jObject,"http://ccg.bananaappscenter.com/api/User/Login");
+                response = new ServiceClass().getJsonObjectResponseTest(jObject,"http://bananatech.co.uk/api/User/Login");
             } catch (JSONException e) {
                 showToast("Server couldn't respond,Please try again");
             }

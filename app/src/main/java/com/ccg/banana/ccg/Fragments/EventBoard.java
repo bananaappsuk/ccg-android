@@ -180,7 +180,7 @@ String sid;
             try {
                 ServiceClass utility = new ServiceClass();
                // response = utility.getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Events/GetTraningsbyUserID?UserID="+sid);
-                response = utility.getJsonObjectResponse("http://ccg.bananaappscenter.com/api/Events/GeteventsbyUserID?UserID="+sid);
+                response = utility.getJsonObjectResponse("http://bananatech.co.uk/api/Events/GeteventsbyUserID?UserID="+sid);
             } catch (Exception e) {
                 showToast("Server couldn't respond,Please try again");
             }

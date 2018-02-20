@@ -452,7 +452,7 @@ public class DisplayMessageBoard extends Fragment {
                 jObject.put("UserID", params[0]);
                 jObject.put("MessageID", params[1]);
                 jObject.put("Comments",params[2]);
-                response = new ServiceClass().getJsonObjectResponsePost("http://ccg.bananaappscenter.com/api/User/MessageComments?UserID="+params[0]+"&MessageID="+params[1]+"&Comments="+params[2]);
+                response = new ServiceClass().getJsonObjectResponsePost("http://bananatech.co.uk/api/User/MessageComments?UserID="+params[0]+"&MessageID="+params[1]+"&Comments="+params[2]);
             } catch (JSONException e) {
                 showToast("Server couldn't respond,Please try again");
             }

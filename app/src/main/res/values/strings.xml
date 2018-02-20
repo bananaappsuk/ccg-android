@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">CCG</string>
-
     <string name="username">Username</string>
     <string name="password">Password</string>
-
     <string name="agree">I agree to <u>terms and conditions</u></string>
     <string name="login">Login</string>
     <string name="register">Register</string>
